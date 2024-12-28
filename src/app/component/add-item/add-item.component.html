@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="submitHandler(form.value)">
+  <div class="my-2 flex items-center">
+    <label class="basis-28" for="name">Nombre:</label>
+    <input
+      formControlName="name"
+      tabindex="0"
+      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      autocomplete="off"
+      type="text"
+      id="name" />
+  </div>
+
+  <div class="my-2 block flex items-center">
+    <label class="basis-28" for="price">Precio:</label>
+    <input
+      formControlName="price"
+      min="0"
+      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      type="number"
+      id="price" />
+  </div>
+  <div class="my-2 block flex items-center">
+    <label class="basis-28" for="quantity">Cantidad por paquete:</label>
+    <input
+      formControlName="quantity"
+      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      type="number"
+      id="quantity" />
+  </div>
+  <div class="my-2 block flex items-center">
+    <label class="basis-28" for="unit">Unidad de medida:</label>
+    <input
+      formControlName="unit"
+      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      type="text"
+      id="unit" />
+  </div>
+
+  <button
+    [disabled]="!form.valid || loading()"
+    type="submit"
+    class="block m-auto mt-4 py-2 px-4 w-full rounded-sm bg-green-500 disabled:opacity-70">
+    Guardar
+  </button>
+</form>
