@@ -1,3 +1,5 @@
+[![Build App CI/CD](https://github.com/rosalesponcerdev/rp-price-history/actions/workflows/main.yml/badge.svg?branch=prod)](https://github.com/rosalesponcerdev/rp-price-history/actions/workflows/main.yml)
+
 # RpPriceHistory
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
