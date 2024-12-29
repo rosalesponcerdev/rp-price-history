@@ -69,9 +69,10 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.9.0
         with:
-          context: ./devops
+          context: .
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
+          file: ./devops/Dockerfile
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.1.0
