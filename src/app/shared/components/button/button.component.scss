@@ -1,0 +1,4 @@
+.loader {
+  @apply aspect-square w-4 sm:w-5 border-4 rounded-full relative border-t-red-500;
+  animation: 1.2s linear rotateElement infinite;
+}

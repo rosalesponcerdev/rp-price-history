@@ -1,23 +1,26 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { Item } from '@core/interface/item.interface';
-import { ItemService } from '@core/service/item.service';
-import { ADD_ITEM_FORM } from './add-item.form';
 import { Router } from '@angular/router';
-import { FormGroupModel } from '@core/interface/form-group-model.interface';
+
+import { ItemService } from '@core/service/item.service';
+import { Item } from '@coreinterfaces/item.interface';
+import { FormGroupModel } from '@coreinterfaces/form-group-model.interface';
+import { UnitOptions } from '@coreinterfaces/unit-options.interface';
+
+import { ADD_ITEM_FORM, GET_UNIT_OPTIONS } from './add-item.form';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'rp-add-item',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, ButtonComponent],
   templateUrl: './add-item.component.html',
-  styleUrl: './add-item.component.scss',
 })
 export class AddItemComponent {
   form: FormGroupModel<Item> = ADD_ITEM_FORM();
 
   loading = signal<boolean>(false);
+  readonly options: UnitOptions[] = GET_UNIT_OPTIONS();
 
   private _itemSrv = inject(ItemService);
   private _router = inject(Router);

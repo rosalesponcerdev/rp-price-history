@@ -1,6 +1,9 @@
-name: Build App
+name: Build App CI/CD
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: ['prod']
 
 jobs:
   build:
@@ -16,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
       - uses: actions/upload-artifact@v4
@@ -35,10 +38,13 @@ jobs:
 
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: '["./devops-nginx.conf"]'
+          files: '["./devops/devops-nginx.conf"]'
         env:
           DOMAIN: ${{vars.DOMAIN}}
           SUB_DOMAIN: ${{vars.SUB_DOMAIN}}
+
+      - name: Print devops-nginx.conf
+        run: cat ./devops/devops-nginx.conf
 
       - uses: actions/download-artifact@v4
         with:
@@ -60,15 +66,13 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
 
-      - name: Print devops-nginx.conf
-        run: cat ./devops-nginx.conf
-
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
+          file: ./devops/Dockerfile
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.1.0
