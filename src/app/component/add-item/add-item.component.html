@@ -1,57 +1,59 @@
 <h2 class="text-center text-xl">Ingresar nuevo elemento</h2>
 <form [formGroup]="form" (ngSubmit)="submitHandler(form.value)">
-  <div class="my-4 flex items-center">
+  <div class="my-4 flex gap-2 items-center">
     <label class="basis-28" for="name">Nombre:</label>
     <input
       placeholder="Ingresar nombre"
       formControlName="name"
       tabindex="0"
-      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
       autocomplete="off"
       type="text"
       id="name" />
   </div>
 
-  <div class="my-4 block flex items-center">
+  <div class="my-4 flex gap-2 items-center">
     <label class="basis-28" for="price">Precio:</label>
     <input
       placeholder="Ingresar Precio por paquete"
       formControlName="price"
       min="0"
-      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
       type="number"
       id="price" />
   </div>
-  <div class="my-4 block flex items-center">
+  <div class="my-4 flex gap-2 items-center">
     <label class="basis-28" for="quantity">Cantidad:</label>
     <input
       placeholder="Ingresar cantidad por paquete"
       formControlName="quantity"
-      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
       type="number"
       id="quantity" />
   </div>
-  <div class="my-4 block flex items-center">
-    <label class="basis-28" for="unit">Unidad:</label>
+  <div class="my-4 flex gap-2 items-center">
+    <label class="basis-28 shrink-0" for="unit">Unidad:</label>
 
-    <select
-      id="unit"
-      name="unit"
-      formControlName="unit"
-      placeholder="asdasdsd"
-      class="grow ml-2 py-1 px-2 basis-36 border border-black rounded-sm min-w-0 appearance-none">
-      <option value="" disabled selected>
-        Selecciona unidad de medida del paquete
-      </option>
+    <div class="grow">
+      <select
+        id="unit"
+        name="unit"
+        formControlName="unit"
+        placeholder="asdasdsd"
+        class="flex w-full py-1 px-2 border border-black rounded-sm min-w-0 appearance-none">
+        <option value="" disabled selected>
+          Selecciona unidad de medida del paquete
+        </option>
 
-      @for (o of options; track o.label) {
-        <optgroup [label]="o.label">
-          @for (item of o.options; track item.value) {
-            <option [value]="item.value">{{ item.label }}</option>
-          }
-        </optgroup>
-      }
-    </select>
+        @for (o of options; track o.label) {
+          <optgroup [label]="o.label">
+            @for (item of o.options; track item.value) {
+              <option [value]="item.value">{{ item.label }}</option>
+            }
+          </optgroup>
+        }
+      </select>
+    </div>
   </div>
 
   <button
