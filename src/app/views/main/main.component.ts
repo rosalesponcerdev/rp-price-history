@@ -6,6 +6,5 @@ import { AddItemComponent } from '../../component/add-item/add-item.component';
   selector: 'rp-main',
   imports: [AddItemComponent],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss',
 })
 export class MainComponent {}
