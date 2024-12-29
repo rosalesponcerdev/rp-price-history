@@ -1,6 +1,9 @@
 name: Build App CI/CD
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: ['prod']
 
 jobs:
   build:
@@ -16,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
       - uses: actions/upload-artifact@v4
