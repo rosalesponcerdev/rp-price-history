@@ -68,7 +68,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: rosalesponcer/briefcase:${{github.sha}}
+          tags: rosalesponcer/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.1.0
@@ -82,10 +82,10 @@ jobs:
           script: |
             docker stop rosalesponcer.com || true
             docker rm rosalesponcer.com || true
-            docker pull ${{secrets.DOCKER_USERNAME}}/briefcase${{github.sha}}
+            docker pull ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}${{github.sha}}
             docker run -d \
                 --name rosalesponcer.com \
                 --env VIRTUAL_HOST=rosalesponcer.com \
                 --restart unless-stopped \
                 --network docker-multiple_default \
-                ${{secrets.DOCKER_USERNAME}}/briefcase:${{github.sha}}
+                ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
