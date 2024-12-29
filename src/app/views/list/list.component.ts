@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Component, inject, Signal } from '@angular/core';
 
 import { ItemStore } from '@core/store/item.store';
-import { Item } from '@core/interface/item.interface';
+import { Item } from '@coreinterfaces/item.interface';
 
 @Component({
   selector: 'rp-list',

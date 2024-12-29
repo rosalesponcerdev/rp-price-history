@@ -38,10 +38,13 @@ jobs:
 
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: '["./devops-nginx.conf"]'
+          files: '["./devops/devops-nginx.conf"]'
         env:
           DOMAIN: ${{vars.DOMAIN}}
           SUB_DOMAIN: ${{vars.SUB_DOMAIN}}
+
+      - name: Print devops-nginx.conf
+        run: cat ./devops/devops-nginx.conf
 
       - uses: actions/download-artifact@v4
         with:
@@ -63,13 +66,10 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
 
-      - name: Print devops-nginx.conf
-        run: cat ./devops-nginx.conf
-
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.9.0
         with:
-          context: .
+          context: ./devops
           push: true
           tags: ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
 

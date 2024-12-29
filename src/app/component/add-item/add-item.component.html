@@ -1,46 +1,46 @@
 <h2 class="text-center text-xl">Ingresar nuevo elemento</h2>
 <form [formGroup]="form" (ngSubmit)="submitHandler(form.value)">
   <div class="my-4 flex gap-2 items-center">
-    <label class="basis-28" for="name">Nombre:</label>
+    <label class="min-w-20" for="name">Nombre:</label>
     <input
       placeholder="Ingresar nombre"
       formControlName="name"
       tabindex="0"
-      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm placeholder:text-gray-400"
       autocomplete="off"
       type="text"
       id="name" />
   </div>
 
   <div class="my-4 flex gap-2 items-center">
-    <label class="basis-28" for="price">Precio:</label>
+    <label class="min-w-20" for="price">Precio:</label>
     <input
       placeholder="Ingresar Precio por paquete"
       formControlName="price"
       min="0"
-      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm placeholder:text-gray-400"
       type="number"
       id="price" />
   </div>
   <div class="my-4 flex gap-2 items-center">
-    <label class="basis-28" for="quantity">Cantidad:</label>
+    <label class="min-w-20" for="quantity">Cantidad:</label>
     <input
       placeholder="Ingresar cantidad por paquete"
       formControlName="quantity"
-      class="grow py-1 px-2 basis-36 border border-black rounded-sm"
+      class="grow py-1 px-2 basis-36 border border-black rounded-sm placeholder:text-gray-400"
       type="number"
       id="quantity" />
   </div>
   <div class="my-4 flex gap-2 items-center">
-    <label class="basis-28 shrink-0" for="unit">Unidad:</label>
+    <label class="min-w-20" for="unit">Unidad:</label>
 
     <div class="grow">
       <select
+        required
         id="unit"
         name="unit"
         formControlName="unit"
-        placeholder="asdasdsd"
-        class="flex w-full py-1 px-2 border border-black rounded-sm min-w-0 appearance-none">
+        class="flex w-full py-1 px-2 border border-black rounded-sm min-w-0 appearance-none bg-white invalid:text-gray-400">
         <option value="" disabled selected>
           Selecciona unidad de medida del paquete
         </option>
@@ -56,10 +56,11 @@
     </div>
   </div>
 
-  <button
-    [disabled]="!form.valid || loading()"
+  <rp-button
+    className="m-auto mt-4 bg-green-500"
     type="submit"
-    class="block m-auto mt-4 py-2 px-4 w-full rounded-sm bg-green-500 disabled:opacity-70">
+    [loading]="loading()"
+    [disabled]="!form.valid">
     Guardar
-  </button>
+  </rp-button>
 </form>

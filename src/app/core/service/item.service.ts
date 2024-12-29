@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Item } from '../interface/item.interface';
+import { Item } from '../interfaces/item.interface';
 import { delay, Observable, of, tap } from 'rxjs';
 import { ItemStore } from '../store/item.store';
 

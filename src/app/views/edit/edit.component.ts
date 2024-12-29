@@ -3,8 +3,8 @@ import { AddItemComponent } from '../../component/add-item/add-item.component';
 
 @Component({
   standalone: true,
-  selector: 'rp-main',
+  selector: 'rp-edit',
   imports: [AddItemComponent],
-  templateUrl: './main.component.html',
+  templateUrl: './edit.component.html',
 })
-export class MainComponent {}
+export class EditComponent {}

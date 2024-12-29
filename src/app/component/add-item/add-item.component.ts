@@ -3,16 +3,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ItemService } from '@core/service/item.service';
-import { Item } from '@core/interface/item.interface';
-import { FormGroupModel } from '@core/interface/form-group-model.interface';
-import { UnitOptions } from '@core/interface/unit-options.interface';
+import { Item } from '@coreinterfaces/item.interface';
+import { FormGroupModel } from '@coreinterfaces/form-group-model.interface';
+import { UnitOptions } from '@coreinterfaces/unit-options.interface';
 
 import { ADD_ITEM_FORM, GET_UNIT_OPTIONS } from './add-item.form';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'rp-add-item',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, ButtonComponent],
   templateUrl: './add-item.component.html',
 })
 export class AddItemComponent {
