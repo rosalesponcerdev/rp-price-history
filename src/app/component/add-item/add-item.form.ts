@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { UnitOptions } from '@coreinterfaces/unit-options.interface';
+import { UnitOptions } from '@core/interfaces/unit-options.interface';
 
 export const ADD_ITEM_FORM = () =>
   new FormGroup({
