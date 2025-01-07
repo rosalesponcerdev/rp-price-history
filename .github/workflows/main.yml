@@ -86,7 +86,7 @@ jobs:
           script: |
             docker stop ${{vars.SUB_DOMAIN}}.${{vars.DOMAIN}} || true
             docker rm ${{vars.SUB_DOMAIN}}.${{vars.DOMAIN}} || true
-            docker pull ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}${{github.sha}}
+            docker pull ${{secrets.DOCKER_USERNAME}}/${{vars.DOCKER_REPOSITORI}}:${{github.sha}}
             docker run -d \
                 --name ${{vars.SUB_DOMAIN}}.${{vars.DOMAIN}} \
                 --env VIRTUAL_HOST=${{vars.SUB_DOMAIN}}.${{vars.DOMAIN}} \
