@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+
 import { Item } from '../interfaces/item.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -29,6 +30,7 @@ export class ItemStore {
   getList(): Item[] {
     return this._list.getValue();
   }
+
   setList(list: Item[]) {
     this._list.next(list);
   }
@@ -37,6 +39,20 @@ export class ItemStore {
     if (!item) return;
 
     this._list.next([item, ...this.getList()]);
+  }
+
+  deleteItem(id?: string) {
+    if (!id) return;
+
+    const list = structuredClone(this.getList());
+
+    const index = list.findIndex(item => item.id === id);
+
+    if (index === -1) return;
+
+    list.splice(index, 1);
+
+    this._list.next(list);
   }
 
   getCurrentItem(): Item | null {
