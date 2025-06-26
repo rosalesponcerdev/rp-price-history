@@ -2,12 +2,11 @@ import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'rp-button',
-  standalone: true,
-  imports: [NgClass],
-  styleUrl: './button.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './button.component.html',
+    selector: 'rp-button',
+    imports: [NgClass],
+    styleUrl: './button.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './button.component.html'
 })
 export class ButtonComponent {
   @Input() loading = false;

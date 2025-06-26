@@ -11,10 +11,9 @@ import { ButtonComponent } from '@shared/components/button/button.component';
 import { ADD_ITEM_FORM, GET_UNIT_OPTIONS } from './add-item.form';
 
 @Component({
-  selector: 'rp-add-item',
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, ButtonComponent],
-  templateUrl: './add-item.component.html',
+    selector: 'rp-add-item',
+    imports: [ReactiveFormsModule, FormsModule, ButtonComponent],
+    templateUrl: './add-item.component.html'
 })
 export class AddItemComponent {
   form: FormGroupModel<Item> = ADD_ITEM_FORM();

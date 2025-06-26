@@ -7,10 +7,9 @@ import { Item } from '@core/interfaces/item.interface';
 import { ItemService } from '../../core/service/item.service';
 
 @Component({
-  selector: 'rp-list',
-  standalone: true,
-  imports: [],
-  templateUrl: './list.component.html',
+    selector: 'rp-list',
+    imports: [],
+    templateUrl: './list.component.html'
 })
 export class ListComponent {
   list: Signal<Item[] | undefined>;
