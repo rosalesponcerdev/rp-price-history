@@ -1,0 +1,7 @@
+@import '../../css/animation.css';
+@reference "tailwindcss";
+
+.loader {
+  @apply w-4 aspect-square border-2 rounded-full relative border-b-violet-950;
+  animation: 1.2s linear rotateElement infinite;
+}

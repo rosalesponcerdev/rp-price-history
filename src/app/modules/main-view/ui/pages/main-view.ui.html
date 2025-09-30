@@ -1,0 +1,41 @@
+@let formGroup = mainViewPrt.form;
+
+<div class="flex gap-4 mb-4">
+  <rp-button className="bg-blue-500" (clicked)="openCreateProductModal.emit()">
+    Agregar Producto
+  </rp-button>
+  <rp-button className="bg-green-500" (clicked)="openCreateBrandModal.emit()">
+    Agregar Marca
+  </rp-button>
+</div>
+
+<form
+  [formGroup]="formGroup"
+  class="flex flex-wrap md:flex-nowrap gap-4 mb-4"
+  (submit)="submitHandler(formGroup.value)">
+  <input
+    formControlName="search"
+    name="search"
+    type="search"
+    placeholder="Buscar producto"
+    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+
+  <select
+    formControlName="category"
+    name="category"
+    class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+    <option value="" selected>Seleccionar una Categoria</option>
+
+    @for (category of categories(); track category.id) {
+    <option [value]="category.id">{{ category.name }}</option>
+    }
+  </select>
+
+  <button type="submit" hidden [disabled]="formGroup.invalid">Buscar</button>
+</form>
+
+@for (product of products(); track product.id) {
+<a class="block cursor-pointer" [routerLink]="[`product/${product.id}`]">
+  {{ product.name }}
+</a>
+}

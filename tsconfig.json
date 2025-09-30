@@ -18,21 +18,18 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
+    "lib": ["ES2022", "dom"],
     "baseUrl": "./",
     "paths": {
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ],
-      "@views/*": [
-        "src/app/views/*"
-      ]
+      "@shared/*": ["src/app/shared/*"],
+      "@ui/*": ["src/app/ui/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@product/*": ["src/app/modules/product/*"],
+      "@category/*": ["src/app/modules/category/*"],
+      "@measurement-units/*": ["src/app/modules/measurement-units/*"],
+      "@main-view/*": ["src/app/modules/main-view/*"],
+      "@presentation/*": ["src/app/modules/presentation/*"],
+      "@price-history/*": ["src/app/modules/price-history/*"]
     }
   },
   "angularCompilerOptions": {

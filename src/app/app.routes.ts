@@ -1,17 +1,26 @@
 import { Routes } from '@angular/router';
-import { EditComponent } from '@views/edit/edit.component';
-import { ListComponent } from '@views/list/list.component';
 
-import { RoutesEnum } from '@core/enum/routes.enum';
+import { RoutesEnum } from '@shared/enum/routes.enum';
 
 export const routes: Routes = [
   {
     path: RoutesEnum.BASE,
-    component: ListComponent,
+    loadComponent: () =>
+      import('@main-view/ui/pages/main-view.container').then(
+        c => c.MainViewContainerComponent
+      ),
   },
   {
-    path: RoutesEnum.EDIT,
-    component: EditComponent,
+    path: RoutesEnum.PRODUCT,
+    loadComponent: () =>
+      import('@product/ui/page/product.page').then(c => c.ProductPageComponent),
+  },
+  {
+    path: RoutesEnum.PRESENTATION,
+    loadComponent: () =>
+      import('@presentation/ui/page/presentation/presentation.page').then(
+        c => c.PresentationPage
+      ),
   },
   {
     path: '**',

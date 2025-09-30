@@ -1,0 +1,66 @@
+@let presentationValue = presentation();
+
+<rp-button className="bg-green-500" (clicked)="addPriceHandler()">
+  Agregar Precio
+</rp-button>
+
+<h3 class="my-4 text-center text-2xl font-semibold">Presentación</h3>
+
+<dl>
+  <div>
+    <p>
+      <b> Nombre: </b>
+      {{ presentationValue?.presentationName }}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      <b> Tamaño: </b>
+      {{ presentationValue?.quantity }}
+      {{ presentationValue?.unitOfMeasure?.abbreviation }}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      <b>Marca: </b>
+      {{ presentationValue?.brand?.name }}
+    </p>
+  </div>
+
+  @if (presentationValue?.additionalDescription) {
+    <div>
+      <p>
+        <b> Descripcion: </b>
+        {{ presentationValue?.additionalDescription }}
+      </p>
+    </div>
+  }
+</dl>
+
+<h3 class="my-4 text-center text-2xl font-semibold">Historico</h3>
+
+<section>
+  @for (price of priceHistoryList(); track price.id) {
+    <article class="border-2 my-4 p-4">
+      <div>
+        <span class="font-bold">Precio: </span>
+        <span>{{
+          price.price | currency: 'PEN' : 'symbol' : '1.2-2' : 'es-PE'
+        }}</span>
+      </div>
+
+      <div>
+        <span class="font-bold"> Precio Por Unidad: </span>
+        <span
+          >{{
+            price.price_per_base_unit
+              | currency: 'PEN' : 'symbol' : '1.2-2' : 'es-PE'
+          }}
+          por {{ presentationValue?.unitOfMeasure?.abbreviation }}</span
+        >
+      </div>
+    </article>
+  }
+</section>

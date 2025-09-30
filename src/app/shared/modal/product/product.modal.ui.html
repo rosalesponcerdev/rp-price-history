@@ -1,0 +1,76 @@
+@let formGroup = productModalPresenter.form;
+
+<form [formGroup]="formGroup">
+  <h1 class="text-2xl text-center">Agregar Producto</h1>
+  <div class="mt-4">
+    <input
+      #firstInput
+      autocomplete="off"
+      type="text"
+      formControlName="name"
+      placeholder="Nombre del producto"
+      name="name_modal"
+      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+  </div>
+
+  <div class="mt-2">
+    <textarea
+      autocomplete="off"
+      maxlength="250"
+      rows="4"
+      class="resize-none block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+      placeholder="Descripcion del producto"
+      formControlName="description"
+      name="description"></textarea>
+  </div>
+
+  <div class="mt-2">
+    <select
+      formControlName="categoryId"
+      name="category_modal"
+      class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+      <option value="null" disabled selected>Seleccionar categoria</option>
+
+      @for (category of categories(); track category.id) {
+      <option [value]="category.id">{{category.name}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="mt-2">
+    <select
+      formControlName="measurementUnitId"
+      name="category_modal"
+      class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+      <option value="null" disabled selected>
+        Seleccionar Unidad de medida
+      </option>
+
+      @for (measurementUnit of measurementUnits(); track measurementUnit.id) {
+      <option [value]="measurementUnit.id">{{measurementUnit.name}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="flex mt-4 gap-4">
+    <div class="grow flex items-center justify-center">
+      <button
+        type="button"
+        class="cursor-pointer text-sm/6 font-semibold text-gray-900"
+        [disabled]="loading()"
+        (click)="closeModalHandler()">
+        Cancelar
+      </button>
+    </div>
+
+    <rp-button
+      type="submit"
+      class="grow"
+      className="bg-indigo-600"
+      [disabled]="!formGroup.valid"
+      [loading]="loading()"
+      (clicked)="saveHandler()"
+      >Guardar</rp-button
+    >
+  </div>
+</form>

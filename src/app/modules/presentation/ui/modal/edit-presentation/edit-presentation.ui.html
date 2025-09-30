@@ -1,0 +1,50 @@
+<form [formGroup]="editPresentationPrt.form" (ngSubmit)="submitFormHandler()">
+  <rp-input
+    formControlName="presentationName"
+    className="my-4"
+    placeholder="Nombre de presentacion" />
+
+  <rp-input
+    formControlName="quantity"
+    className="my-4"
+    type="number"
+    placeholder="Cantidad" />
+
+  <rp-select
+    formControlName="brandId"
+    className="my-4"
+    placeholder="Marca"
+    [options]="brands()" />
+
+  <rp-select
+    formControlName="unitOfMeasureId"
+    className="my-4"
+    placeholder="Unidad de medida"
+    [options]="measurementUnits()" />
+
+  <rp-text-area
+    className="my-4"
+    formControlName="additionalDescription"
+    placeholder="Descripcion adicional" />
+
+  <div class="flex items-center mt-4 gap-4">
+    <div class="grow flex items-center justify-center">
+      <rp-button
+        type="button"
+        [outline]="true"
+        [disabled]="loading()"
+        (clicked)="cancelModal.emit()">
+        Cancelar
+      </rp-button>
+    </div>
+
+    <rp-button
+      type="submit"
+      class="grow"
+      className="bg-indigo-600"
+      [loading]="loading()"
+      [disabled]="editPresentationPrt.form.invalid"
+      >Guardar</rp-button
+    >
+  </div>
+</form>

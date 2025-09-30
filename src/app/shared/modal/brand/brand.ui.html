@@ -1,0 +1,38 @@
+@let formGroup = brandModalPresenter.form;
+
+<form [formGroup]="formGroup">
+  <h1 class="text-2xl text-center">Agregar Marca</h1>
+
+  <div class="mt-4">
+    <input
+      #firstInput
+      autocomplete="off"
+      type="text"
+      formControlName="name"
+      placeholder="Nombre del producto"
+      name="name_modal"
+      class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+  </div>
+
+  <div class="flex mt-4 gap-4">
+    <div class="grow flex items-center justify-center">
+      <button
+        type="button"
+        class="cursor-pointer text-sm/6 font-semibold text-gray-900"
+        [disabled]="loading()"
+        (click)="closeModalHandler()">
+        Cancelar
+      </button>
+    </div>
+
+    <rp-button
+      type="submit"
+      class="grow"
+      className="bg-indigo-600"
+      [disabled]="!formGroup.valid"
+      [loading]="loading()"
+      (clicked)="saveHandler()"
+      >Guardar</rp-button
+    >
+  </div>
+</form>

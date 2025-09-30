@@ -1,0 +1,35 @@
+<form [formGroup]="editPriceHistoryPrt.form" (ngSubmit)="saveHandler()">
+  <rp-input
+    formControlName="price"
+    className="my-4"
+    placeholder="Precio"
+    type="number" />
+
+  <rp-input formControlName="notes" className="my-4" placeholder="Notas" />
+
+  <rp-select
+    formControlName="store_id"
+    placeholder="Seleccionar tienda"
+    [options]="stores()" />
+
+  <div class="flex items-center mt-4 gap-4">
+    <div class="grow flex items-center justify-center">
+      <rp-button
+        type="button"
+        [outline]="true"
+        [disabled]="loading()"
+        (clicked)="cancelModal.emit()">
+        Cancelar
+      </rp-button>
+    </div>
+
+    <rp-button
+      type="submit"
+      class="grow"
+      className="bg-indigo-600"
+      [loading]="loading()"
+      [disabled]="editPriceHistoryPrt.form.invalid"
+      >Guardar</rp-button
+    >
+  </div>
+</form>
