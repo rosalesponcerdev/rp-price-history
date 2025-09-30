@@ -43,7 +43,7 @@ export class EditPresentationPresenter {
     Validators.required,
   ]);
 
-  public constructor() {
+  constructor() {
     this.form = new FormGroup<EditFormGroup>({
       productId: this._productIdCtrl,
       unitOfMeasureId: this._unitOfMeasureIdCtrl,
@@ -54,7 +54,7 @@ export class EditPresentationPresenter {
     });
   }
 
-  get value() {
+  public get value() {
     return this.form.value as CreatePresentation;
   }
 }

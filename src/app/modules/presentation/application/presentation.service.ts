@@ -31,7 +31,7 @@ export class PresentationService {
 
   private readonly _presentationState = inject(PresentationState);
 
-  public constructor() {
+  constructor() {
     this._createPresentationUseCase = new CreatePresentationUseCase(
       this._presentationHttpRepository
     );

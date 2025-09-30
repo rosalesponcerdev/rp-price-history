@@ -9,7 +9,6 @@ import { ButtonComponent } from '@shared/components/button/button.component';
 import { ListFormValue } from '../interface/list.interface';
 import { MainViewPresenter } from './main-view.presenter';
 
-
 @Component({
   selector: 'rp-list-ui',
   templateUrl: './main-view.ui.html',
@@ -17,21 +16,21 @@ import { MainViewPresenter } from './main-view.presenter';
   providers: [MainViewPresenter],
 })
 export class MainViewUiComponent {
-  readonly products = input.required<Product[]>();
-  readonly categories = input.required<Category[]>();
+  public readonly products = input.required<Product[]>();
+  public readonly categories = input.required<Category[]>();
 
-  readonly searchProduct = output<ListFormValue>();
-  readonly openCreateProductModal = output();
-  readonly openCreateBrandModal = output();
-  readonly clickProduct = output<number>();
+  public readonly searchProduct = output<ListFormValue>();
+  public readonly openCreateProductModal = output();
+  public readonly openCreateBrandModal = output();
+  public readonly clickProduct = output<number>();
 
-  readonly mainViewPrt = inject(MainViewPresenter);
+  public readonly mainViewPrt = inject(MainViewPresenter);
 
-  submitHandler(formValue: unknown) {
+  public submitHandler(formValue: unknown) {
     this.searchProduct.emit(formValue as ListFormValue);
   }
 
-  clickProductHandler(productId: number) {
+  public clickProductHandler(productId: number) {
     if (!productId) return;
 
     this.clickProduct.emit(productId);

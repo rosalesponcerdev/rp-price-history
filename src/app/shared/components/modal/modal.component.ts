@@ -23,11 +23,11 @@ import {
   </div>`,
 })
 export class ModalComponent implements AfterViewInit {
-  readonly hidden = signal<boolean>(true);
+  public readonly hidden = signal<boolean>(true);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  componentType = input<any>();
-  data = input();
+  public componentType = input<any>();
+  public data = input();
 
   @ViewChild('hostModal', { static: true, read: ViewContainerRef })
   private readonly hostModal?: ViewContainerRef;

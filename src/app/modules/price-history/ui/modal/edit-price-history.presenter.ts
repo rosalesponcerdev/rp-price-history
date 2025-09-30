@@ -32,7 +32,7 @@ export class EditPriceHistoryPresenter {
     nonNullable: true,
   });
 
-  public constructor() {
+  constructor() {
     this.form = new FormGroup({
       id: this._idCtrl,
       presentation_id: this._presentationIdCtrl,

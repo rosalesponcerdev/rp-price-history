@@ -23,6 +23,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: RoutesEnum.LOGIN,
+    loadComponent: () =>
+      import('@presentation/ui/page/presentation/presentation.page').then(
+        c => c.PresentationPage
+      ),
+  },
+  {
     path: '**',
     redirectTo: RoutesEnum.BASE,
   },

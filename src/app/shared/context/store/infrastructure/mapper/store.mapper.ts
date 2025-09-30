@@ -2,11 +2,11 @@ import { Store } from '@shared/context/store/domain/model';
 import { StoreDto } from '../dto';
 
 export class StoreMapper {
-  static fromArray(storeDto: Partial<StoreDto>[]): Store[] {
+  public static fromArray(storeDto: Partial<StoreDto>[]): Store[] {
     return storeDto.map(store => StoreMapper.from(store));
   }
 
-  static from(storeDto: Partial<StoreDto>): Store {
+  public static from(storeDto: Partial<StoreDto>): Store {
     return {
       id: `${storeDto.id}`,
       created_at: storeDto?.created_at ?? null,

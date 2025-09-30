@@ -1,10 +1,10 @@
-import { ProductRepositoryPort } from '../port/product-repository.port';
-import { Product } from '../model/product.model';
+import { Product } from '@product/domain/model';
+import { ProductRepositoryPort } from '@product/domain/port';
 
 export class ListProductUseCase {
   constructor(private readonly _productRepository: ProductRepositoryPort) {}
 
-  execute(): Promise<Product[]> {
+  public execute(): Promise<Product[]> {
     return this._productRepository.getAll();
   }
 }

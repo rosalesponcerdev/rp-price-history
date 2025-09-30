@@ -16,7 +16,7 @@ export class BrandState {
   private readonly _state: WritableSignal<Brand[]>;
   private readonly _currentBrand: WritableSignal<Brand | undefined>;
 
-  public constructor() {
+  constructor() {
     this._state = signal<Brand[]>([]);
     this.state$ = computed(() => this._state());
 
@@ -24,24 +24,24 @@ export class BrandState {
     this.currentBrand$ = computed(() => this._currentBrand());
   }
 
-  set brands(categories: Brand[]) {
+  public set brands(categories: Brand[]) {
     this._state.set(structuredClone(categories));
   }
 
-  get brands() {
+  public get brands() {
     return this._state();
   }
 
-  set currentBrand(brand: Brand | undefined) {
+  public set currentBrand(brand: Brand | undefined) {
     const newBrand = brand ? structuredClone(brand) : undefined;
     this._currentBrand.set(newBrand);
   }
 
-  get currentBrand(): Brand | undefined {
+  public get currentBrand(): Brand | undefined {
     return this._currentBrand();
   }
 
-  findById(brandId: string) {
+  public findById(brandId: string) {
     return this.brands.find(({ id }) => id === brandId);
   }
 }

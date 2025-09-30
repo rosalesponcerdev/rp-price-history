@@ -40,7 +40,7 @@ export class BrandService extends Loading<{
     );
   }
 
-  async getAll(): Promise<Brand[]> {
+  public async getAll(): Promise<Brand[]> {
     this._setLoading('create', true);
 
     if (this._brandState.brands.length > 0) {
@@ -56,7 +56,7 @@ export class BrandService extends Loading<{
     return this._brandState.brands;
   }
 
-  async create(newBrand: NewBrand): Promise<Brand> {
+  public async create(newBrand: NewBrand): Promise<Brand> {
     this._setLoading('create', true);
 
     const savedBrand = await this._crateBrandUseCase.execute(newBrand);
@@ -67,7 +67,7 @@ export class BrandService extends Loading<{
     return savedBrand;
   }
 
-  async getById(id: string): Promise<Brand> {
+  public async getById(id: string): Promise<Brand> {
     this._setLoading('getById', true);
 
     const brand = await this._getBrandByIdUseCase.execute(id);

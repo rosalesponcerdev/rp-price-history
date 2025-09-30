@@ -2,23 +2,23 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
-import { EndPoint } from '@shared/enum/endpoint.enum';
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { EndPoint } from '@shared/enum';
 
-import { ProductTransformer } from '@product/infrastructure/transformer/product.transformer';
-import { ProductRepositoryPort } from '@product/domain/port/product-repository.port';
+import { ListFormValue } from '@main-view/ui/interface/list.interface';
 import {
   CreateProduct,
   CreateProductApi,
   Product,
   ProductApi,
 } from '@product/domain/model/product.model';
+import { ProductRepositoryPort } from '@product/domain/port/product-repository.port';
+import { ProductTransformer } from '@product/infrastructure/transformer/product.transformer';
 
 @Injectable({ providedIn: 'root' })
 export class ProductHttpRepository implements ProductRepositoryPort {
   private readonly _httpClient = inject(HttpClient);
 
-  async getAll(): Promise<Product[]> {
+  public async getAll(): Promise<Product[]> {
     const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
 
     const products = await lastValueFrom(
@@ -32,7 +32,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
     return products.map(product => ProductTransformer.from(product));
   }
 
-  async getByCriteria(criteria: ListFormValue): Promise<Product[]> {
+  public async getByCriteria(criteria: ListFormValue): Promise<Product[]> {
     const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
 
     const params: Record<string, string> = {
@@ -58,7 +58,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
     return products.map(product => ProductTransformer.from(product));
   }
 
-  async create(product: CreateProduct): Promise<Product> {
+  public async create(product: CreateProduct): Promise<Product> {
     const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
 
     const body: CreateProductApi = {
@@ -76,7 +76,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
     return ProductTransformer.from(newProduct);
   }
 
-  async getById(id: string): Promise<Product> {
+  public async getById(id: string): Promise<Product> {
     const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
 
     const params = new HttpParams({

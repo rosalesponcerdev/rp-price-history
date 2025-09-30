@@ -5,13 +5,13 @@ import { MeasurementUnits } from '@measurement-units/domain/model/measurement-un
 @Injectable({ providedIn: 'root' })
 export class MeasurementUnitsState {
   private readonly _state$ = signal<MeasurementUnits[]>([]);
-  readonly state = computed(() => this._state$());
+  public readonly state = computed(() => this._state$());
 
-  set measurementUnits(categories: MeasurementUnits[]) {
+  public set measurementUnits(categories: MeasurementUnits[]) {
     this._state$.set(categories);
   }
 
-  get measurementUnits() {
+  public get measurementUnits() {
     return this._state$();
   }
 }

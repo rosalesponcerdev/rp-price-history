@@ -1,17 +1,13 @@
-import { inject } from '@angular/core';
-
+import { CategoryTransformer } from '@category/infrastructure/transformer/category.transformer';
 import {
   CreateProduct,
   CreateProductApi,
   Product,
   ProductApi,
 } from '@product/domain/model/product.model';
-import { CategoryTransformer } from '@category/infrastructure/transformer/category.transformer';
 
 export class ProductTransformer {
-  private readonly _categoryTransformer = inject(CategoryTransformer);
-
-  static from(product: ProductApi): Product {
+  public static from(product: ProductApi): Product {
     const tempProduct: Product = {
       id: product.id,
       name: product.nombre,
@@ -31,7 +27,7 @@ export class ProductTransformer {
     return tempProduct;
   }
 
-  static to(product: Product): ProductApi {
+  public static to(product: Product): ProductApi {
     return {
       id: product.id,
       nombre: product.name,
@@ -43,7 +39,7 @@ export class ProductTransformer {
     };
   }
 
-  static createTo(newProduct: CreateProduct): CreateProductApi {
+  public static createTo(newProduct: CreateProduct): CreateProductApi {
     return {
       categoria_id: newProduct.categoryId,
       descripcion: newProduct.description,

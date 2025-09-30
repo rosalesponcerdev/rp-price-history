@@ -1,16 +1,16 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
-import { EndPoint } from '@shared/enum/endpoint.enum';
-import { BrandPort } from '@main-view/domain/port/brand.port';
+import { EndPoint } from '@shared/enum';
+
 import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
+import { BrandPort } from '@main-view/domain/port/brand.port';
 import {
   BrandApi,
   NewBrandApi,
 } from '@main-view/infrastructure/interface/brand-api.interface';
-
-import { BrandTransformer } from '../transformer';
+import { BrandTransformer } from '@main-view/infrastructure/transformer';
 
 @Injectable({ providedIn: 'root' })
 export class BrandHttpRepository implements BrandPort {
@@ -18,7 +18,7 @@ export class BrandHttpRepository implements BrandPort {
 
   private readonly _httpSrv = inject(HttpClient);
 
-  async getAll(): Promise<Brand[]> {
+  public async getAll(): Promise<Brand[]> {
     const params = new HttpParams().set('select', '*');
 
     const brands = await lastValueFrom(
@@ -30,7 +30,7 @@ export class BrandHttpRepository implements BrandPort {
     return brands.map(b => BrandTransformer.from(b));
   }
 
-  async create(newBrand: NewBrand): Promise<Brand> {
+  public async create(newBrand: NewBrand): Promise<Brand> {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Prefer', 'return=representation');
@@ -44,7 +44,7 @@ export class BrandHttpRepository implements BrandPort {
     return BrandTransformer.from(savedBrand);
   }
 
-  async getById(id: string): Promise<Brand> {
+  public async getById(id: string): Promise<Brand> {
     const params = new HttpParams({
       fromObject: {
         id: `eq.${id}`,

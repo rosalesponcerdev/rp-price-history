@@ -15,7 +15,7 @@ export class CategoryService {
     this._listUseCase = new ListCategoryUseCase(this._categoryRepository);
   }
 
-  async list(): Promise<Category[]> {
+  public async list(): Promise<Category[]> {
     if (this._categoryState.categories.length > 0) {
       return this._categoryState.categories;
     }

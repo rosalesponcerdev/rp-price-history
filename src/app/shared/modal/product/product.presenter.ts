@@ -12,7 +12,7 @@ interface ProductFormGroup {
 
 @Injectable()
 export class ProductModalPresenter {
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor() {
     this.form = new FormGroup<ProductFormGroup>({

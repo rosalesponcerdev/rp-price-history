@@ -3,4 +3,5 @@ export enum RoutesEnum {
   EDIT = 'edit',
   PRODUCT = 'product/:productId',
   PRESENTATION = 'presentation/:presentationId',
+  LOGIN = 'login',
 }

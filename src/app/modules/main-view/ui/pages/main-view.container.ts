@@ -1,15 +1,15 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 
-import { Product } from '@product/domain/model/product.model';
-import { Category } from '@category/domain/model/category.model';
-import { ProductService } from '@product/application/use-case/product.service';
-import { CategoryService } from '@category/application/category.service';
-import { ModalService } from '@shared/services/modal.service';
+import { BrandModalComponent } from '@shared/modal/brand/brand.modal';
 import { ProductModalComponent } from '@shared/modal/product/product.modal';
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { ModalService } from '@shared/services/modal.service';
 
+import { CategoryService } from '@category/application/category.service';
+import { Category } from '@category/domain/model/category.model';
+import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { ProductService } from '@product/application/use-case/product.service';
+import { Product } from '@product/domain/model/product.model';
 import { MainViewUiComponent } from './main-view.ui';
-import { BrandModalComponent } from '../../../../shared/modal/brand/brand.modal';
 
 @Component({
   selector: 'rp-list',
@@ -22,31 +22,31 @@ import { BrandModalComponent } from '../../../../shared/modal/brand/brand.modal'
     (searchProduct)="searchProductHandler($event)" />`,
 })
 export class MainViewContainerComponent implements OnInit {
-  readonly products = signal<Product[]>([]);
-  readonly categories = signal<Category[]>([]);
+  public readonly products = signal<Product[]>([]);
+  public readonly categories = signal<Category[]>([]);
 
-  readonly modalSrv = inject(ModalService);
+  public readonly modalSrv = inject(ModalService);
   private readonly _listProductSrv = inject(ProductService);
   private readonly _listCategorySrv = inject(CategoryService);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._getCategories();
     this._listProducts();
   }
 
-  async searchProductHandler(formValue: ListFormValue) {
+  public async searchProductHandler(formValue: ListFormValue) {
     const products = await this._listProductSrv.getByCriteria(formValue);
 
     this.products.set(products);
   }
 
-  openCreateProductModalHandler() {
+  public openCreateProductModalHandler() {
     this.modalSrv.show(ProductModalComponent).subscribe(res => {
       console.log('openCreateProductModalHandler', res);
     });
   }
 
-  openCreateBrandModalHandler() {
+  public openCreateBrandModalHandler() {
     this.modalSrv.show(BrandModalComponent).subscribe(res => {
       console.log('openCreateBrandModalHandler', res);
     });

@@ -9,7 +9,7 @@ export class GetStoresHttpApplicationUseCase {
   private readonly _getStoresUseCase: GetStoresUseCase;
   private readonly _httpRepository = inject(STORE_HTTP_REPOSITORY);
 
-  public constructor() {
+  constructor() {
     this._getStoresUseCase = new GetStoresUseCase(this._httpRepository);
   }
 

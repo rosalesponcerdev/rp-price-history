@@ -14,7 +14,7 @@ export class PriceHistoryState {
 
   private readonly _list: WritableSignal<PriceHistory[]>;
 
-  public constructor() {
+  constructor() {
     this._list = signal<PriceHistory[]>([]);
 
     this.list$ = computed(() => structuredClone(this._list()));

@@ -2,7 +2,7 @@ import { CreatePriceHistory } from '@price-history/domain/model';
 import { EditPriceHistoryFormValue } from '@price-history/ui/modal/edit-price-history.presenter';
 
 export class PriceHistoryApplicationMapper {
-  static toCreateModel(
+  public static toCreateModel(
     editPriceHistoryFormValue: EditPriceHistoryFormValue
   ): CreatePriceHistory {
     const createPriceHistory: CreatePriceHistory = {

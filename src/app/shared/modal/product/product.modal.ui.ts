@@ -26,21 +26,21 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   imports: [FormsModule, ReactiveFormsModule, ButtonComponent],
 })
 export class ProductModalUi implements AfterViewInit, OnChanges {
-  readonly categories = input.required<Category[]>();
-  readonly measurementUnits = input.required<MeasurementUnits[]>();
-  readonly loading = input.required<boolean>();
+  public readonly categories = input.required<Category[]>();
+  public readonly measurementUnits = input.required<MeasurementUnits[]>();
+  public readonly loading = input.required<boolean>();
 
-  readonly save = output<CreateProduct>();
-  readonly closeModal = output();
+  public readonly save = output<CreateProduct>();
+  public readonly closeModal = output();
 
-  readonly productModalPresenter = inject(ProductModalPresenter);
+  public readonly productModalPresenter = inject(ProductModalPresenter);
 
   private readonly _modalService = inject(ModalService);
 
   @ViewChild('firstInput')
   private readonly firstInput!: ElementRef<HTMLInputElement>;
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     const loading = changes['loading'];
 
     if (!loading) return;
@@ -55,15 +55,15 @@ export class ProductModalUi implements AfterViewInit, OnChanges {
     this.productModalPresenter.form.enable();
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.firstInput.nativeElement.focus();
   }
 
-  closeModalHandler() {
+  public closeModalHandler() {
     this._modalService.close();
   }
 
-  saveHandler() {
+  public saveHandler() {
     this.save.emit(this.productModalPresenter.form.value);
   }
 }

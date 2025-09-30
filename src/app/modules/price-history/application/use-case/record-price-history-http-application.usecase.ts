@@ -14,7 +14,7 @@ export class RecordPriceHistoryHttpApplicationUseCase {
     PRICE_HISTORY_HTTP_REPOSITORY
   );
 
-  public constructor() {
+  constructor() {
     this._recordPriceHistoryUseCase = new RecordPriceHistoryUseCase(
       this._priceHistoryHttpRepository
     );

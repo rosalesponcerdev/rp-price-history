@@ -3,7 +3,7 @@ import { signal } from '@angular/core';
 export abstract class Loading<T> {
   private readonly _loading = signal<T>({} as T);
 
-  public constructor(initialValue: T) {
+  constructor(initialValue: T) {
     this._loading.set({ ...initialValue });
   }
 

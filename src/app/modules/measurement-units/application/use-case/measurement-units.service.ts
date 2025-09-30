@@ -25,7 +25,7 @@ export class MeasurementUnitsService {
     );
   }
 
-  async list(): Promise<MeasurementUnits[]> {
+  public async list(): Promise<MeasurementUnits[]> {
     if (this._measurementUnitsState.measurementUnits.length > 0) {
       return this._measurementUnitsState.measurementUnits;
     }

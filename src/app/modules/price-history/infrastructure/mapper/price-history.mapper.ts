@@ -2,14 +2,16 @@ import { CreatePriceHistory, PriceHistory } from '@price-history/domain/model';
 
 import { StoreMapper } from '@shared/context/store/infrastructure/mapper';
 
-import { PriceHistoryDto } from '../dto';
+import { PriceHistoryDto } from '@price-history/infrastructure/dto';
 
 export class PriceHistoryMapper {
-  static fromArray(priceHistoryDtoList: PriceHistoryDto[]): PriceHistory[] {
+  public static fromArray(
+    priceHistoryDtoList: PriceHistoryDto[]
+  ): PriceHistory[] {
     return priceHistoryDtoList.map(p => PriceHistoryMapper.from(p));
   }
 
-  static from(priceHistoryDto: PriceHistoryDto): PriceHistory {
+  public static from(priceHistoryDto: PriceHistoryDto): PriceHistory {
     const priceHistory: PriceHistory = {
       id: `${priceHistoryDto.id}`,
       presentation_id: priceHistoryDto.presentacion_id,
@@ -32,7 +34,9 @@ export class PriceHistoryMapper {
     return priceHistory;
   }
 
-  static toCreate(createPriceHistory: CreatePriceHistory): PriceHistoryDto {
+  public static toCreate(
+    createPriceHistory: CreatePriceHistory
+  ): PriceHistoryDto {
     const priceHistoryDto: PriceHistoryDto = {
       precio: createPriceHistory.price,
       presentacion_id: Number(createPriceHistory.presentation_id),

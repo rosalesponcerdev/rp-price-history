@@ -49,7 +49,7 @@ export class PresentationHttpRepository implements PresentationPort {
     return PresentationMapper.from(data);
   }
 
-  async getById(id: string): Promise<Presentation> {
+  public async getById(id: string): Promise<Presentation> {
     const url = `${EndPoint.BASE_URL}/${EndPoint.PRESENTATION}`;
 
     const params: Partial<Record<keyof PresentationDto | 'select', string>> = {
