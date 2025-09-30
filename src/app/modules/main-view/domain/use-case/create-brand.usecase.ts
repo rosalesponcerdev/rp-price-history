@@ -1,10 +1,10 @@
-import { BrandPort } from '@main-view/domain/port/brand.port';
 import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
+import { BrandPort } from '@main-view/domain/port/brand.port';
 
 export class CreateBrandUseCase {
-  constructor(private _brandPort: BrandPort) {}
+  constructor(private readonly _brandPort: BrandPort) {}
 
-  async execute(newBrand: NewBrand): Promise<Brand> {
+  public async execute(newBrand: NewBrand): Promise<Brand> {
     return this._brandPort.create(newBrand);
   }
 }

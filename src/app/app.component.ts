@@ -9,5 +9,5 @@ import { ModalComponent } from './shared/components/modal/modal.component';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'rp-price-history';
+  public title = 'rp-price-history';
 }

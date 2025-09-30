@@ -41,11 +41,11 @@ export class EditPresentationModalUi implements OnChanges {
   public readonly save = output<CreatePresentation>();
   public readonly cancelModal = output();
 
-  readonly brands = input.required({
+  public readonly brands = input.required({
     transform: (brands: Brand[]) => BrandTransformer.toItemArray(brands),
   });
 
-  readonly measurementUnits = input.required({
+  public readonly measurementUnits = input.required({
     transform: (measurementUnits: MeasurementUnits[]) =>
       MeasurementUnitsTransformer.toItemArray(measurementUnits),
   });

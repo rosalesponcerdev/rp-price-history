@@ -1,13 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 
 import { ModalService } from '@shared/services/modal.service';
-import { Category } from '@category/domain/model/category.model';
-import { ProductService } from '@product/application/use-case/product.service';
-import { CreateProduct } from '@product/domain/model/product.model';
+
 import { CategoryService } from '@category/application/category.service';
+import { Category } from '@category/domain/model/category.model';
 import { MeasurementUnitsService } from '@measurement-units/application/use-case/measurement-units.service';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
-
+import { ProductService } from '@product/application/use-case/product.service';
+import { CreateProduct } from '@product/domain/model/product.model';
 import { ProductModalUi } from './product.modal.ui';
 
 @Component({
@@ -21,9 +21,9 @@ import { ProductModalUi } from './product.modal.ui';
     (closeModal)="closeModalHandler()" />`,
 })
 export class ProductModalComponent {
-  readonly categories = signal<Category[]>([]);
-  readonly measurementUnits = signal<MeasurementUnits[]>([]);
-  readonly loading = signal<boolean>(false);
+  public readonly categories = signal<Category[]>([]);
+  public readonly measurementUnits = signal<MeasurementUnits[]>([]);
+  public readonly loading = signal<boolean>(false);
 
   private readonly _modalSrv = inject(ModalService);
   private readonly _productSrv = inject(ProductService);
@@ -35,13 +35,13 @@ export class ProductModalComponent {
     this._getMeasurementUnits();
   }
 
-  async saveHandler(product: CreateProduct) {
+  public async saveHandler(product: CreateProduct) {
     this.loading.set(true);
     await this._productSrv.create(product);
     this.closeModalHandler();
   }
 
-  closeModalHandler() {
+  public closeModalHandler() {
     this._modalSrv.close();
   }
 

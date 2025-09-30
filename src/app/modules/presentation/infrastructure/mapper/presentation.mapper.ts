@@ -1,18 +1,18 @@
+import { BrandTransformer } from '@main-view/infrastructure/transformer';
+import { MeasurementUnitsTransformer } from '@measurement-units/infrastructure/transformer/measurement-units.transformer';
 import { CreatePresentation, Presentation } from '@presentation/domain/model';
 import {
   CreatePresentationDto,
   PresentationDto,
 } from '@presentation/infrastructure/dto';
-import { BrandTransformer } from '@main-view/infrastructure/transformer';
 import { ProductTransformer } from '@product/infrastructure/transformer/product.transformer';
-import { MeasurementUnitsTransformer } from '@measurement-units/infrastructure/transformer/measurement-units.transformer';
 
 export class PresentationMapper {
-  static fromArray(presentationDto: PresentationDto[]): Presentation[] {
+  public static fromArray(presentationDto: PresentationDto[]): Presentation[] {
     return presentationDto.map(p => PresentationMapper.from(p));
   }
 
-  static from(presentationDto: PresentationDto): Presentation {
+  public static from(presentationDto: PresentationDto): Presentation {
     const presentation: Presentation = {
       barcode: presentationDto.codigo_barras,
       additionalDescription: presentationDto.descripcion_adicional,
@@ -40,7 +40,7 @@ export class PresentationMapper {
     return presentation;
   }
 
-  static toCreate(
+  public static toCreate(
     createPresentation: CreatePresentation
   ): CreatePresentationDto {
     const tempCreatePresentationApi: CreatePresentationDto = {

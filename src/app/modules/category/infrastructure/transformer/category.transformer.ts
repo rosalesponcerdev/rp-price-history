@@ -1,7 +1,7 @@
-import { CategoryApi, Category } from '../../domain/model/category.model';
+import { Category, CategoryApi } from '@category/domain/model';
 
 export class CategoryTransformer {
-  static from(category: CategoryApi): Category {
+  public static from(category: CategoryApi): Category {
     return {
       id: category.id,
       createdAt: category.created_at,
@@ -10,7 +10,7 @@ export class CategoryTransformer {
     };
   }
 
-  static fromPartial(category: Partial<CategoryApi>): Partial<Category> {
+  public static fromPartial(category: Partial<CategoryApi>): Partial<Category> {
     const tempCategory: Partial<Category> = {};
 
     if (category.id !== undefined) tempCategory.id = category.id;
@@ -21,7 +21,7 @@ export class CategoryTransformer {
     return tempCategory;
   }
 
-  static to(category: Category): CategoryApi {
+  public static to(category: Category): CategoryApi {
     return {
       id: category.id,
       created_at: category.createdAt,

@@ -27,16 +27,16 @@ import { ProductPageUiComponent } from './product.ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductPageComponent implements OnInit {
-  readonly productId = input.required<string>();
+  public readonly productId = input.required<string>();
 
-  readonly product = signal<Product | undefined>(undefined);
-  readonly presentations = signal<Presentation[]>([]);
+  public readonly product = signal<Product | undefined>(undefined);
+  public readonly presentations = signal<Presentation[]>([]);
 
   public readonly presentationState = inject(PresentationState);
   private readonly _productSrv = inject(ProductService);
   private readonly _presentationSrv = inject(PresentationService);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._getProductById();
     this._getPresentationByProductId();
   }

@@ -36,14 +36,14 @@ export class EditPresentationModalComponent implements OnInit {
   public readonly product = signal<Product | undefined>(undefined);
   public readonly loading: Signal<boolean>;
 
-  private data?: { product?: Product } = {};
+  private readonly data?: { product?: Product } = {};
 
   private readonly _brandSrv = inject(BrandService);
   private readonly _measurementUnitsSrv = inject(MeasurementUnitsService);
   private readonly _presentationSrv = inject(PresentationService);
   private readonly _modalSrv = inject(ModalService);
 
-  public constructor() {
+  constructor() {
     this.loading = computed(() => {
       console.log(this._presentationSrv.loading$().create);
 

@@ -24,7 +24,7 @@ export class ModalService {
   private readonly elementInjector = inject(Injector);
   private readonly rendererFactory = inject(RendererFactory2);
 
-  public constructor() {
+  constructor() {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
@@ -38,7 +38,7 @@ export class ModalService {
 
   private _closeSubj?: Subject<any | undefined>;
 
-  close(data?: any) {
+  public close(data?: any) {
     this._modalConfig.next(undefined);
     this.componentRef?.destroy();
     this._closeSubj?.next(data);
@@ -46,7 +46,7 @@ export class ModalService {
   }
 
   // eslint-disable-next-line @typescript-eslint/prefer-function-type
-  show<T extends { new (...args: any[]): any }>(
+  public show<T extends { new (...args: any[]): any }>(
     component: T,
     data?: InstanceType<T>['data']
   ) {

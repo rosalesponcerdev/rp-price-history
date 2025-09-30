@@ -15,8 +15,8 @@ import { BrandUiComponent } from './brand.ui';
     (closeModal)="closeModalHandler()" />`,
 })
 export class BrandModalComponent {
-  readonly brands = signal<Brand[]>([]);
-  readonly loading = signal<boolean>(false);
+  public readonly brands = signal<Brand[]>([]);
+  public readonly loading = signal<boolean>(false);
 
   private readonly _brandSrv = inject(BrandService);
   private readonly _modalSrv = inject(ModalService);
@@ -25,7 +25,7 @@ export class BrandModalComponent {
     this._getBrands();
   }
 
-  async saveHandler(newBrand: NewBrand) {
+  public async saveHandler(newBrand: NewBrand) {
     this.loading.set(true);
 
     await this._brandSrv.create(newBrand);
@@ -33,7 +33,7 @@ export class BrandModalComponent {
     this.closeModalHandler();
   }
 
-  closeModalHandler() {
+  public closeModalHandler() {
     this._modalSrv.close();
   }
 

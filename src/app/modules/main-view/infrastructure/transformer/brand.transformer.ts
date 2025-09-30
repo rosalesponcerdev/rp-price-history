@@ -6,7 +6,7 @@ import {
 import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
 
 export class BrandTransformer {
-  static from(brand: BrandApi): Brand {
+  public static from(brand: BrandApi): Brand {
     return {
       id: `${brand.id}`,
       name: brand.nombre,
@@ -14,17 +14,17 @@ export class BrandTransformer {
     };
   }
 
-  static saveTo(brand: NewBrand): NewBrandApi {
+  public static saveTo(brand: NewBrand): NewBrandApi {
     return {
       nombre: brand.name,
     };
   }
 
-  static toItemArray(brands: Brand[]): Item[] {
+  public static toItemArray(brands: Brand[]): Item[] {
     return brands.map(b => this.toItem(b));
   }
 
-  static toItem(brand: Brand): Item {
+  public static toItem(brand: Brand): Item {
     return {
       id: brand.id,
       text: brand.name,

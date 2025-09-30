@@ -9,7 +9,7 @@ interface BrandFormGroup {
 
 @Injectable()
 export class BrandModalPresenter {
-  form: FormGroup<BrandFormGroup>;
+  public form: FormGroup<BrandFormGroup>;
 
   constructor() {
     this.form = new FormGroup({

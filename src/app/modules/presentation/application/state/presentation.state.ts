@@ -18,7 +18,7 @@ export class PresentationState {
     Presentation | undefined
   >;
 
-  public constructor() {
+  constructor() {
     this._presentations = signal<Presentation[]>([]);
     this.presentations$ = computed(() => this._presentations());
 
@@ -26,30 +26,30 @@ export class PresentationState {
     this.currentPresentation$ = computed(() => this._currentPresentation());
   }
 
-  get presentations(): Presentation[] {
+  public get presentations(): Presentation[] {
     return this._presentations();
   }
 
-  set presentations(presentation: Presentation[]) {
+  public set presentations(presentation: Presentation[]) {
     this._presentations.set(structuredClone(presentation));
   }
 
-  get currentPresentation(): Presentation | undefined {
+  public get currentPresentation(): Presentation | undefined {
     return this._currentPresentation();
   }
 
-  set currentPresentation(presentation: Presentation | undefined) {
+  public set currentPresentation(presentation: Presentation | undefined) {
     this._currentPresentation.set(structuredClone(presentation));
   }
 
-  unshift(nePresentation: Presentation) {
+  public unshift(nePresentation: Presentation) {
     this._presentations.update(presentations => [
       nePresentation,
       ...presentations,
     ]);
   }
 
-  findById(presentationId: string) {
+  public findById(presentationId: string) {
     return this.presentations.find(({ id }) => presentationId === id);
   }
 }

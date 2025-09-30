@@ -6,7 +6,7 @@ export class ListMeasurementUnitsUseCase {
     private readonly _measurementUnitsRepository: MeasurementUnitsPort
   ) {}
 
-  execute(): Promise<MeasurementUnits[]> {
+  public execute(): Promise<MeasurementUnits[]> {
     return this._measurementUnitsRepository.getAll();
   }
 }

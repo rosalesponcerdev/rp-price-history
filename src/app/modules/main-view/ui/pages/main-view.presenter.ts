@@ -4,7 +4,7 @@ import { ListFormGroup } from '../interface/list.interface';
 
 @Injectable()
 export class MainViewPresenter {
-  form: FormGroup<ListFormGroup>;
+  public form: FormGroup<ListFormGroup>;
 
   constructor() {
     this.form = new FormGroup({

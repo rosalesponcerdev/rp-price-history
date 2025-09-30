@@ -15,13 +15,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  readonly loading = input(false);
-  readonly disabled = input(false);
-  readonly className = input('');
-  readonly type = input<'submit' | 'reset' | 'button' | ''>('');
-  readonly outline = input<boolean>(false);
+  public readonly loading = input(false);
+  public readonly disabled = input(false);
+  public readonly className = input('');
+  public readonly type = input<'submit' | 'reset' | 'button' | ''>('');
+  public readonly outline = input<boolean>(false);
 
-  readonly classNameObject = computed(() => {
+  public readonly classNameObject = computed(() => {
     const className = this.className();
 
     const isOutline = this.outline();
@@ -36,7 +36,9 @@ export class ButtonComponent {
     return classObj;
   });
 
-  readonly clicked = output();
+  public readonly clicked = output();
 
-  readonly disableButton = computed(() => this.disabled() || this.loading());
+  public readonly disableButton = computed(
+    () => this.disabled() || this.loading()
+  );
 }

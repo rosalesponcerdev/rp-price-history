@@ -15,13 +15,13 @@ export class StoreService extends Loading<{
 
   private readonly storeState = inject(StoreState);
 
-  public constructor() {
+  constructor() {
     super({
       getAll: false,
     });
   }
 
-  async getAll(): Promise<Store[]> {
+  public async getAll(): Promise<Store[]> {
     try {
       this._setLoading('getAll', true);
 

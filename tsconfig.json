@@ -29,7 +29,8 @@
       "@measurement-units/*": ["src/app/modules/measurement-units/*"],
       "@main-view/*": ["src/app/modules/main-view/*"],
       "@presentation/*": ["src/app/modules/presentation/*"],
-      "@price-history/*": ["src/app/modules/price-history/*"]
+      "@price-history/*": ["src/app/modules/price-history/*"],
+      "@auth/*": ["src/app/modules/auth/*"]
     }
   },
   "angularCompilerOptions": {

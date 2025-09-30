@@ -4,7 +4,7 @@ import { BrandPort } from '@main-view/domain/port/brand.port';
 export class GetBrandUseCase {
   constructor(private readonly _brandPort: BrandPort) {}
 
-  execute(): Promise<Brand[]> {
+  public execute(): Promise<Brand[]> {
     return this._brandPort.getAll();
   }
 }

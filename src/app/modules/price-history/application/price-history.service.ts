@@ -24,7 +24,7 @@ export class PriceHistoryService extends Loading<{
 
   private readonly _priceHistoryState = inject(PriceHistoryState);
 
-  public constructor() {
+  constructor() {
     super({
       create: false,
       getByPresentationId: false,

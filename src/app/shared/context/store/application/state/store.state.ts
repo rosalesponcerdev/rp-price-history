@@ -7,27 +7,27 @@ export class StoreState {
   public stores$: Signal<Store[]>;
   public selected$: Signal<Store | undefined>;
 
-  private _stores = signal<Store[]>([]);
-  private _selected = signal<Store | undefined>(undefined);
+  private readonly _stores = signal<Store[]>([]);
+  private readonly _selected = signal<Store | undefined>(undefined);
 
-  public constructor() {
+  constructor() {
     this.stores$ = computed(() => structuredClone(this._stores()));
     this.selected$ = computed(() => structuredClone(this._selected()));
   }
 
-  get stores(): Store[] {
+  public get stores(): Store[] {
     return this._stores();
   }
 
-  set stores(stores: Store[] | undefined) {
+  public set stores(stores: Store[] | undefined) {
     this._stores.set(structuredClone(stores ?? []));
   }
 
-  get selected(): Store | undefined {
+  public get selected(): Store | undefined {
     return this._selected();
   }
 
-  set selected(stores: Store | undefined) {
+  public set selected(stores: Store | undefined) {
     this._selected.set(structuredClone(stores));
   }
 }

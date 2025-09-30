@@ -1,12 +1,11 @@
 import { Presentation } from '@presentation/domain/model';
-
 import { CreatePriceHistory, PriceHistory } from '@price-history/domain/model';
 import { PriceHistoryPort } from '@price-history/domain/port';
 
 export class RecordPriceHistoryUseCase {
-  public constructor(private readonly _priceHistoryPort: PriceHistoryPort) {}
+  constructor(private readonly _priceHistoryPort: PriceHistoryPort) {}
 
-  execute(
+  public execute(
     createPriceHistory: CreatePriceHistory,
     presentation: Presentation
   ): Promise<PriceHistory> {

@@ -14,12 +14,12 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink, ButtonComponent],
 })
 export class ProductPageUiComponent {
-  readonly product = input.required<Product | undefined>();
-  readonly presentations = input<Presentation[]>([]);
+  public readonly product = input.required<Product | undefined>();
+  public readonly presentations = input<Presentation[]>([]);
 
   private readonly modalSrv = inject(ModalService);
 
-  clickHandler() {
+  public clickHandler() {
     this.modalSrv.show(EditPresentationModalComponent, {
       product: this.product(),
     });

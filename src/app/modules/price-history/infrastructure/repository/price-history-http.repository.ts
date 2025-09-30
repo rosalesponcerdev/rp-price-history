@@ -15,7 +15,9 @@ export class PriceHistoryHttpRepository implements PriceHistoryPort {
 
   private readonly _httpClient = inject(HttpClient);
 
-  async create(createPriceHistory: CreatePriceHistory): Promise<PriceHistory> {
+  public async create(
+    createPriceHistory: CreatePriceHistory
+  ): Promise<PriceHistory> {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Prefer', 'return=representation');
@@ -31,7 +33,9 @@ export class PriceHistoryHttpRepository implements PriceHistoryPort {
     return PriceHistoryMapper.from(data);
   }
 
-  async getByPresentation(presentationId: string): Promise<PriceHistory[]> {
+  public async getByPresentation(
+    presentationId: string
+  ): Promise<PriceHistory[]> {
     const params: Record<string, string> = {
       select: '*,tiendas(id,nombre,direccion)',
       presentacion_id: `eq.${presentationId}`,

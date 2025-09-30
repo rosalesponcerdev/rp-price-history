@@ -1,10 +1,10 @@
-import { inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { StorePort } from '@shared/context/store/domain/port';
-import { Store } from '@shared/context/store/domain/model';
-import { EndPoint } from '@shared/enum';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+
+import { Store } from '@shared/context/store/domain/model';
+import { StorePort } from '@shared/context/store/domain/port';
+import { EndPoint } from '@shared/enum';
 import { StoreDto } from '../dto/store.dto';
 import { StoreMapper } from '../mapper/store.mapper';
 
