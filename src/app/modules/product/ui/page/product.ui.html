@@ -1,10 +1,10 @@
-<h1>{{product()?.id}}</h1>
-<h2>{{product()?.name}}</h2>
-<h3>{{product()?.description}}</h3>
-<h3>{{product()?.category?.name}}</h3>
+<h1>{{ product()?.id }}</h1>
+<h2>{{ product()?.name }}</h2>
+<h3>{{ product()?.description }}</h3>
+<h3>{{ product()?.category?.name }}</h3>
 
 <section class="mt-5">
-  <rp-button className="bg-green-500" (clicked)="clickHandler()">
+  <rp-button className="bg-green-500" (clicked)="openModalHandler()">
     Agregar presentación
   </rp-button>
 
@@ -12,13 +12,15 @@
 
   <ul>
     @for (presentation of presentations(); track presentation.id) {
-    <li class="my-4 py-2">
-      <a
-        class="font-bold cursor-pointer hover:text-red-600"
-        [routerLink]="[`/presentation/${presentation.id}`]">
-        {{presentation.presentationName}}
-      </a>
-    </li>
+      <li class="my-4 py-2">
+        <a
+          class="font-bold cursor-pointer hover:text-red-600"
+          [routerLink]="[`/portal/presentation/${presentation.id}`]">
+          {{ presentation.brand?.name }} | {{ presentation.presentationName }} |
+          {{ presentation.quantity }}
+          {{ presentation.unitOfMeasure?.abbreviation }}
+        </a>
+      </li>
     }
   </ul>
 </section>

@@ -5,7 +5,7 @@ import { ListMeasurementUnitsUseCase } from '@measurement-units/domain/use-case/
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
 import { MeasurementUnitsState } from '@shared/state';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MeasurementUnitsService {
   public readonly loading$: Signal<boolean>;
 

@@ -53,7 +53,6 @@ export class EditPresentationModalUi implements OnChanges {
   public ngOnChanges(changes: SimpleChanges): void {
     if (!changes['product']?.currentValue) return;
 
-    console.log(changes['product']?.currentValue?.id);
     this.editPresentationPrt.form.patchValue({
       productId: changes['product'].currentValue?.id,
     });

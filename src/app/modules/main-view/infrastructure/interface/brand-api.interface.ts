@@ -1,5 +1,5 @@
 export interface BrandApi {
-  id: number;
+  id: string;
   nombre: string;
   created_at: string;
 }

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 
 import { CategoryService } from '@category/application/category.service';
 import { Category } from '@category/domain/model/category.model';

@@ -5,7 +5,7 @@ import {
   STORE_HTTP_REPOSITORY,
   StoreHttpRepository,
 } from '@shared/context/store/infrastructure/repository';
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 
 import { StoreService } from '../store.service';
 

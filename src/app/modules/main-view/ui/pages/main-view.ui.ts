@@ -6,7 +6,7 @@ import { Category } from '@category/domain/model/category.model';
 import { Product } from '@product/domain/model/product.model';
 
 import { ButtonComponent } from '@shared/components/button/button.component';
-import { ListFormValue } from '../interface/list.interface';
+import { ListFormValue } from '../interface';
 import { MainViewPresenter } from './main-view.presenter';
 
 @Component({

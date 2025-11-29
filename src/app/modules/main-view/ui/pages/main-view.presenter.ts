@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ListFormGroup } from '../interface/list.interface';
+import { ListFormGroup } from '../interface';
 
 @Injectable()
 export class MainViewPresenter {

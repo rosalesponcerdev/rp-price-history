@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 
-import { StoreState } from '@shared/context/store/application/state';
 import { StoreService } from '@shared/context/store/application/store.service';
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
+import { StoreState } from '@shared/state';
 
 import { Presentation } from '@presentation/domain/model';
 import { PriceHistoryApplicationMapper } from '@price-history/application/mapper';
@@ -43,14 +43,21 @@ export class EditPriceHistoryModalComponent implements OnInit {
     this._modalSrv.close();
   }
 
-  public saveHandler(formValue: EditPriceHistoryFormValue) {
-    const presentation = this.presentation();
+  public async saveHandler(formValue: EditPriceHistoryFormValue) {
+    try {
+      const presentation = this.presentation();
 
-    if (!presentation) throw new Error('No Presentation allowed');
+      if (!presentation) throw new Error('No Presentation allowed');
 
-    const createModel = PriceHistoryApplicationMapper.toCreateModel(formValue);
+      const createModel =
+        PriceHistoryApplicationMapper.toCreateModel(formValue);
 
-    this._priceHistorySrv.create(createModel, presentation);
+      await this._priceHistorySrv.create(createModel, presentation);
+
+      this._modalSrv.close();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   private _getStores() {

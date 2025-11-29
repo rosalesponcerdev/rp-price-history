@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 
 import { EndPoint } from '@shared/enum';
 
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { ListFormValue } from '@main-view/ui/interface';
 import {
   CreateProduct,
   CreateProductApi,
@@ -14,12 +14,12 @@ import {
 import { ProductRepositoryPort } from '@product/domain/port/product-repository.port';
 import { ProductTransformer } from '@product/infrastructure/transformer/product.transformer';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProductHttpRepository implements ProductRepositoryPort {
   private readonly _httpClient = inject(HttpClient);
 
   public async getAll(): Promise<Product[]> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
+    const url = `/${EndPoint.PRODUCTS}`;
 
     const products = await lastValueFrom(
       this._httpClient.get<ProductApi[]>(url, {
@@ -33,7 +33,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
   }
 
   public async getByCriteria(criteria: ListFormValue): Promise<Product[]> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
+    const url = `/${EndPoint.PRODUCTS}`;
 
     const params: Record<string, string> = {
       select: '*',
@@ -59,7 +59,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
   }
 
   public async create(product: CreateProduct): Promise<Product> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
+    const url = `/${EndPoint.PRODUCTS}`;
 
     const body: CreateProductApi = {
       ...ProductTransformer.createTo(product),
@@ -77,7 +77,7 @@ export class ProductHttpRepository implements ProductRepositoryPort {
   }
 
   public async getById(id: string): Promise<Product> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRODUCTS}`;
+    const url = `/${EndPoint.PRODUCTS}`;
 
     const params = new HttpParams({
       fromObject: {
@@ -96,6 +96,8 @@ export class ProductHttpRepository implements ProductRepositoryPort {
         headers,
       })
     );
+
+    if (!product) throw new Error('NO PRODUCT');
 
     return ProductTransformer.from(product);
   }

@@ -27,7 +27,7 @@
     <option value="" selected>Seleccionar una Categoria</option>
 
     @for (category of categories(); track category.id) {
-    <option [value]="category.id">{{ category.name }}</option>
+      <option [value]="category.id">{{ category.name }}</option>
     }
   </select>
 
@@ -35,7 +35,7 @@
 </form>
 
 @for (product of products(); track product.id) {
-<a class="block cursor-pointer" [routerLink]="[`product/${product.id}`]">
-  {{ product.name }}
-</a>
+  <a class="block cursor-pointer" [routerLink]="[`product/${product.id}`]">
+    {{ product.name }}
+  </a>
 }

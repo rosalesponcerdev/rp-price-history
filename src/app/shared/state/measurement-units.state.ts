@@ -2,7 +2,7 @@ import { computed, Injectable, signal } from '@angular/core';
 
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MeasurementUnitsState {
   private readonly _state$ = signal<MeasurementUnits[]>([]);
   public readonly state = computed(() => this._state$());

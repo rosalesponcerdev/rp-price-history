@@ -1,7 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { Category } from '@category/domain/model/category.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CategoryState {
   private readonly _state$ = signal<Category[]>([]);
   public readonly state = computed(() => this._state$());

@@ -24,6 +24,6 @@ export class RecordPriceHistoryUseCase {
     quantity: number;
     price: number;
   }) {
-    return quantity / price;
+    return price / quantity;
   }
 }

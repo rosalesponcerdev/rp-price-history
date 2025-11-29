@@ -3,6 +3,7 @@ import {
   ApplicationRef,
   ComponentRef,
   createComponent,
+  EnvironmentInjector,
   inject,
   Injectable,
   Injector,
@@ -15,11 +16,12 @@ import { Subject } from 'rxjs';
 
 import { ModalComponent } from '@shared/components/modal/modal.component';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ModalService {
   private readonly renderer: Renderer2;
   private componentRef?: ComponentRef<ModalComponent>;
 
+  private readonly environmentInjector = inject(EnvironmentInjector);
   private readonly applicationRef = inject(ApplicationRef);
   private readonly elementInjector = inject(Injector);
   private readonly rendererFactory = inject(RendererFactory2);
@@ -67,13 +69,13 @@ export class ModalService {
     component: any,
     data: any
   ): ComponentRef<ModalComponent> {
-    const environmentInjector = this.applicationRef.injector;
-
     const dataBinding = signal(data);
     const componentType = signal(component);
 
+    console.log(this.elementInjector);
+
     const componentRef = createComponent(ModalComponent, {
-      environmentInjector,
+      environmentInjector: this.environmentInjector,
       elementInjector: this.elementInjector,
       bindings: [
         inputBinding('componentType', componentType),

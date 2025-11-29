@@ -1,12 +1,12 @@
 export interface CategoryApi {
   created_at: string | null;
   descripcion: string | null;
-  id: number;
+  id: string;
   nombre: string;
 }
 
 export interface Category {
-  id: number;
+  id: string;
   createdAt: string | null;
   description: string | null;
   name: string;

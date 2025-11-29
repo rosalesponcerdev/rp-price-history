@@ -2,13 +2,14 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { BrandModalComponent } from '@shared/modal/brand/brand.modal';
 import { ProductModalComponent } from '@shared/modal/product/product.modal';
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 
+import { SessionStore } from '@auth/application/store';
 import { CategoryService } from '@category/application/category.service';
-import { Category } from '@category/domain/model/category.model';
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { Category } from '@category/domain/model';
+import { ListFormValue } from '@main-view/ui/interface';
 import { ProductService } from '@product/application/use-case/product.service';
-import { Product } from '@product/domain/model/product.model';
+import { Product } from '@product/domain/model';
 import { MainViewUiComponent } from './main-view.ui';
 
 @Component({
@@ -25,9 +26,10 @@ export class MainViewContainerComponent implements OnInit {
   public readonly products = signal<Product[]>([]);
   public readonly categories = signal<Category[]>([]);
 
-  public readonly modalSrv = inject(ModalService);
+  private readonly _modalSrv = inject(ModalService);
   private readonly _listProductSrv = inject(ProductService);
   private readonly _listCategorySrv = inject(CategoryService);
+  private readonly _sessionStore = inject(SessionStore);
 
   public ngOnInit(): void {
     this._getCategories();
@@ -41,13 +43,13 @@ export class MainViewContainerComponent implements OnInit {
   }
 
   public openCreateProductModalHandler() {
-    this.modalSrv.show(ProductModalComponent).subscribe(res => {
+    this._modalSrv.show(ProductModalComponent).subscribe(res => {
       console.log('openCreateProductModalHandler', res);
     });
   }
 
   public openCreateBrandModalHandler() {
-    this.modalSrv.show(BrandModalComponent).subscribe(res => {
+    this._modalSrv.show(BrandModalComponent).subscribe(res => {
       console.log('openCreateBrandModalHandler', res);
     });
   }

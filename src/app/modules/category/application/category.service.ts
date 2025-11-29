@@ -5,7 +5,7 @@ import { CategoryHttpRepository } from '@category/infrastructure/repository/cate
 import { ListCategoryUseCase } from '@category/domain/use-case/list-category.usecase';
 import { Category } from '@category/domain/model/category.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CategoryService {
   private readonly _categoryRepository = inject(CategoryHttpRepository);
   private readonly _categoryState = inject(CategoryState);

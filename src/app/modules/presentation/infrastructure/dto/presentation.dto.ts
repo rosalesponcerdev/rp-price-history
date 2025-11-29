@@ -3,12 +3,12 @@ import { UnidadesMedida } from '@measurement-units/domain/model/measurement-unit
 import { ProductApi } from '@product/domain/model';
 
 export interface PresentationDto {
-  id: number;
-  marca_id: number;
+  id: string;
+  marca_id: string;
   marcas?: BrandApi;
-  producto_id: number;
+  producto_id: string;
   productos?: ProductApi;
-  unidad_medida_id: number;
+  unidad_medida_id: string;
   unidades_medida?: UnidadesMedida;
   cantidad: number;
   codigo_barras: string | null;

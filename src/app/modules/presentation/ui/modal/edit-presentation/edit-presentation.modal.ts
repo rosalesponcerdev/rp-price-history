@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 
 import { BrandService } from '@main-view/application/use-case/brand.service';
 import { Brand } from '@main-view/domain/model/brand.model';
@@ -45,8 +45,6 @@ export class EditPresentationModalComponent implements OnInit {
 
   constructor() {
     this.loading = computed(() => {
-      console.log(this._presentationSrv.loading$().create);
-
       return this._presentationSrv.loading$().create;
     });
   }

@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { ProductModalPresenter } from './product.presenter';
 
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 import { CreateProduct } from '@product/domain/model/product.model';
 import { Category } from '@category/domain/model/category.model';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
@@ -44,8 +44,6 @@ export class ProductModalUi implements AfterViewInit, OnChanges {
     const loading = changes['loading'];
 
     if (!loading) return;
-
-    console.log(loading);
 
     if (loading.currentValue) {
       this.productModalPresenter.form.disable();

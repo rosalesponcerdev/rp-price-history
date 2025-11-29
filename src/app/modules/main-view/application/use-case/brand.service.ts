@@ -11,7 +11,7 @@ import {
 } from '@main-view/domain/use-case';
 import { BrandHttpRepository } from '@main-view/infrastructure/repository';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class BrandService extends Loading<{
   create: boolean;
   getAll: boolean;

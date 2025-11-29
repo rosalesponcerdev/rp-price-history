@@ -8,7 +8,7 @@ import {
 
 import { PriceHistory } from '@price-history/domain/model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class PriceHistoryState {
   public readonly list$: Signal<PriceHistory[]>;
 

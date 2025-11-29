@@ -1,37 +1,24 @@
-import {
-  Directive,
-  forwardRef,
-  HostBinding,
-  HostListener,
-  signal,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, model } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 
-@Directive({
-  selector: '[rpValueAccessor]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RpValueAccessor),
-      multi: true,
-    },
-  ],
+@Component({
+  selector: 'rp-base-value-accessor',
+  host: {
+    '(inputChange)': 'inputChangeRegister($event)',
+    '(blurChange)': 'blurChangeRegister()',
+  },
+  template: '',
 })
-export class RpValueAccessor implements ControlValueAccessor {
-  @HostBinding('value')
-  public readonly value = signal<string>('');
+export class RpBaseValueAccessor implements ControlValueAccessor {
+  public readonly value = model<string>('');
+  public readonly disabled = model<boolean>(false);
 
-  @HostBinding('disabled')
-  public readonly disabled = signal<boolean>(false);
-
-  @HostListener('inputChange', ['$event'])
-  public inputChange(value: string) {
+  public inputChangeRegister(value: string) {
     this.value.set(value);
     this.onChange(value);
   }
 
-  @HostListener('blurChange')
-  public blurChange() {
+  public blurChangeRegister() {
     this.onTouched();
   }
 

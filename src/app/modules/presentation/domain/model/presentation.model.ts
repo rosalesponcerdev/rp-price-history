@@ -4,11 +4,11 @@ import { Product } from '@product/domain/model';
 
 export interface Presentation {
   id: string;
-  productId: number;
+  productId: string;
   product?: Product;
-  brandId: number;
+  brandId: string;
   brand?: Brand;
-  unitOfMeasureId: number;
+  unitOfMeasureId: string;
   unitOfMeasure?: MeasurementUnits;
   barcode: string | null;
   createdAt: string | null;
