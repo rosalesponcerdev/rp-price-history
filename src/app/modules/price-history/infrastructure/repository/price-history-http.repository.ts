@@ -11,7 +11,7 @@ import { PriceHistoryMapper } from '@price-history/infrastructure/mapper';
 
 @Injectable()
 export class PriceHistoryHttpRepository implements PriceHistoryPort {
-  private readonly URL = `${EndPoint.BASE_URL}/${EndPoint.PRICE_HISTORY}`;
+  private readonly URL = `/${EndPoint.PRICE_HISTORY}`;
 
   private readonly _httpClient = inject(HttpClient);
 

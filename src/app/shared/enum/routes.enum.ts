@@ -1,5 +1,5 @@
 export enum RoutesEnum {
-  BASE = '',
+  BASE = 'portal',
   EDIT = 'edit',
   PRODUCT = 'product/:productId',
   PRESENTATION = 'presentation/:presentationId',

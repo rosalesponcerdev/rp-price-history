@@ -1,0 +1,26 @@
+@let form = loginPrt.form;
+
+<form
+  class="h-full grid content-center-safe"
+  [formGroup]="form"
+  (ngSubmit)="sigInHandler()">
+  <div>
+    <div class="mb-4">
+      <rp-input
+        formControlName="email"
+        placeholder="Email"
+        [inputModeType]="'email'" />
+    </div>
+
+    <div class="my-4">
+      <rp-input
+        formControlName="password"
+        placeholder="Password"
+        type="password" />
+    </div>
+
+    <rp-button className="bg-blue-500" [disabled]="form.invalid || loading()">
+      Iniciar Session
+    </rp-button>
+  </div>
+</form>

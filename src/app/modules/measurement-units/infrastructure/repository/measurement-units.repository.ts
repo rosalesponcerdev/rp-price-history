@@ -10,12 +10,12 @@ import { MeasurementUnitsPort } from '@measurement-units/domain/port/measurement
 import { MeasurementUnitsTransformer } from '@measurement-units/infrastructure/transformer/measurement-units.transformer';
 import { EndPoint } from '@shared/enum';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MeasurementUnitsHttpRepository implements MeasurementUnitsPort {
   private readonly _httpClient = inject(HttpClient);
 
   public async getAll(): Promise<MeasurementUnits[]> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.MEASUREMENT_UNITS}`;
+    const url = `/${EndPoint.MEASUREMENT_UNITS}`;
     const params = new HttpParams().set('select', '*');
 
     const measurements = await lastValueFrom(

@@ -1,4 +1,4 @@
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { ListFormValue } from '@main-view/ui/interface';
 import { CreateProduct, Product } from '../model/product.model';
 
 export interface ProductRepositoryPort {

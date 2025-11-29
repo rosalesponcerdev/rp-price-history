@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 
-import { ListFormValue } from '@main-view/ui/interface/list.interface';
+import { ListFormValue } from '@main-view/ui/interface';
 import { CreateProduct, Product } from '@product/domain/model/product.model';
 import { GetProductByIdUseCase } from '@product/domain/use-case';
 import { CreateProductUseCase } from '@product/domain/use-case/create-product.usecase';
@@ -8,7 +8,7 @@ import { FilterProductUseCase } from '@product/domain/use-case/filter-product.us
 import { ListProductUseCase } from '@product/domain/use-case/list-product.usecase';
 import { ProductHttpRepository } from '@product/infrastructure/repository/product.repository';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProductService {
   private readonly _productRepository = inject(ProductHttpRepository);
 

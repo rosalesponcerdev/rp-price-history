@@ -2,8 +2,8 @@ import { Store } from '@shared/context/store/domain/model';
 
 export interface PriceHistory {
   id: string;
-  presentation_id: number;
-  store_id: number;
+  presentation_id: string;
+  store_id: string;
   registration_date?: string;
   notes?: string;
   price: number;

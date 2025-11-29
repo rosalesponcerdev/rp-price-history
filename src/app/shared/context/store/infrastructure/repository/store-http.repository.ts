@@ -14,7 +14,7 @@ export const STORE_HTTP_REPOSITORY = new InjectionToken<StorePort>(
 
 @Injectable()
 export class StoreHttpRepository implements StorePort {
-  private readonly URL = `${EndPoint.BASE_URL}/${EndPoint.STORES}`;
+  private readonly URL = `/${EndPoint.STORES}`;
 
   private readonly _httClient = inject(HttpClient);
 

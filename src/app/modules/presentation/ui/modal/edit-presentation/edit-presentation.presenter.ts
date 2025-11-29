@@ -25,21 +25,21 @@ export class EditPresentationPresenter {
   private readonly _additionalDescriptionCtrl = new FormControl<string | null>(
     null
   );
-  private readonly _unitOfMeasureIdCtrl = new FormControl<number | null>(null, [
+  private readonly _unitOfMeasureIdCtrl = new FormControl<string | null>(null, [
     Validators.required,
   ]);
   private readonly _presentationNameCtrl = new FormControl<string | null>(
     null,
     [Validators.required]
   );
-  private readonly _productIdCtrl = new FormControl<number | null>(null, [
+  private readonly _productIdCtrl = new FormControl<string | null>(null, [
     Validators.required,
   ]);
   private readonly _quantityCtrl = new FormControl<number | null>(null, [
     Validators.required,
     Validators.min(0),
   ]);
-  private readonly _brandIdCtrl = new FormControl<number | null>(null, [
+  private readonly _brandIdCtrl = new FormControl<string | null>(null, [
     Validators.required,
   ]);
 

@@ -56,10 +56,15 @@
         <span
           >{{
             price.price_per_base_unit
-              | currency: 'PEN' : 'symbol' : '1.2-2' : 'es-PE'
+              | currency: 'PEN' : 'symbol' : '1.2-4' : 'es-PE'
           }}
           por {{ presentationValue?.unitOfMeasure?.abbreviation }}</span
         >
+      </div>
+
+      <div>
+        <span class="font-bold"> Tienda: </span>
+        <span>{{ price.store?.name }}</span>
       </div>
     </article>
   }

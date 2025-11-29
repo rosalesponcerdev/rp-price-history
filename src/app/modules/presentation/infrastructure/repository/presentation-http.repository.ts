@@ -13,12 +13,12 @@ export class PresentationHttpRepository implements PresentationPort {
   private readonly _httpSrv = inject(HttpClient);
 
   public async getPresentationsByProduct(
-    productId: number
+    productId: string
   ): Promise<Presentation[]> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRESENTATION}`;
+    const url = `/${EndPoint.PRESENTATION}`;
 
     const params: Partial<Record<keyof PresentationDto | 'select', string>> = {
-      select: '*',
+      select: '*,marcas(nombre),unidades_medida(abreviacion)',
       producto_id: `eq.${productId}`,
     };
 
@@ -32,7 +32,7 @@ export class PresentationHttpRepository implements PresentationPort {
   public async create(
     createPresentation: CreatePresentation
   ): Promise<Presentation> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRESENTATION}`;
+    const url = `/${EndPoint.PRESENTATION}`;
 
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
@@ -50,7 +50,7 @@ export class PresentationHttpRepository implements PresentationPort {
   }
 
   public async getById(id: string): Promise<Presentation> {
-    const url = `${EndPoint.BASE_URL}/${EndPoint.PRESENTATION}`;
+    const url = `/${EndPoint.PRESENTATION}`;
 
     const params: Partial<Record<keyof PresentationDto | 'select', string>> = {
       select: '*,marcas(*),unidades_medida(*),productos(*)',

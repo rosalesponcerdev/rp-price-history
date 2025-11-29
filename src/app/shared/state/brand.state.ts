@@ -8,7 +8,7 @@ import {
 
 import { Brand } from '@main-view/domain/model/brand.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class BrandState {
   public readonly state$: Signal<Brand[]>;
   public readonly currentBrand$: Signal<Brand | undefined>;

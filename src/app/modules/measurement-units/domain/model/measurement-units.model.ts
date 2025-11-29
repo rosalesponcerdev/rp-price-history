@@ -1,12 +1,12 @@
 export interface UnidadesMedida {
-  id: number;
+  id: string;
   abreviacion: string;
   nombre: string;
   tipo_medida: string;
 }
 
 export interface MeasurementUnits {
-  id: number;
+  id: string;
   abbreviation: string;
   name: string;
   measurementType: string;

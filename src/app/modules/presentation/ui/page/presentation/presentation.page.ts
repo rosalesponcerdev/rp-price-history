@@ -1,7 +1,7 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 
 import { provideStore } from '@shared/context/store/application/providers';
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 import { PriceHistoryState } from '@shared/state';
 
 import { PresentationService } from '@presentation/application';

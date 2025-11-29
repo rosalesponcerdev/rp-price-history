@@ -1,18 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-  OnInit,
-  signal,
-} from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 
-import { ModalService } from '@shared/services/modal.service';
+import { ModalService } from '@shared/services';
 
 import { PresentationService } from '@presentation/application';
 import { providePresentation } from '@presentation/application/providers';
 import { PresentationState } from '@presentation/application/state';
 import { Presentation } from '@presentation/domain/model';
+import { EditPresentationModalComponent } from '@presentation/ui/modal/edit-presentation/edit-presentation.modal';
 import { ProductService } from '@product/application/use-case';
 import { Product } from '@product/domain/model';
 import { ProductPageUiComponent } from './product.ui';
@@ -20,11 +14,11 @@ import { ProductPageUiComponent } from './product.ui';
 @Component({
   selector: 'rp-product',
   imports: [ProductPageUiComponent],
-  providers: [ModalService, ...providePresentation()],
+  providers: [...providePresentation()],
   template: `<rp-product-ui
     [product]="product()"
-    [presentations]="presentationState.presentations$()" />`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    [presentations]="presentationState.presentations$()"
+    (openModal)="openModalHandler()" />`,
 })
 export class ProductPageComponent implements OnInit {
   public readonly productId = input.required<string>();
@@ -36,9 +30,17 @@ export class ProductPageComponent implements OnInit {
   private readonly _productSrv = inject(ProductService);
   private readonly _presentationSrv = inject(PresentationService);
 
+  private readonly modalSrv = inject(ModalService);
+
   public ngOnInit(): void {
     this._getProductById();
     this._getPresentationByProductId();
+  }
+
+  public openModalHandler() {
+    this.modalSrv.show(EditPresentationModalComponent, {
+      product: this.product(),
+    });
   }
 
   private async _getProductById() {
@@ -48,6 +50,6 @@ export class ProductPageComponent implements OnInit {
   }
 
   private async _getPresentationByProductId() {
-    this._presentationSrv.getPresentationsByProductId(+this.productId());
+    this._presentationSrv.getPresentationsByProductId(this.productId());
   }
 }

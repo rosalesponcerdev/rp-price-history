@@ -12,9 +12,9 @@ import {
 } from '@main-view/infrastructure/interface/brand-api.interface';
 import { BrandTransformer } from '@main-view/infrastructure/transformer';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class BrandHttpRepository implements BrandPort {
-  private readonly URL = `${EndPoint.BASE_URL}/${EndPoint.BRAND}`;
+  private readonly URL = `/${EndPoint.BRAND}`;
 
   private readonly _httpSrv = inject(HttpClient);
 

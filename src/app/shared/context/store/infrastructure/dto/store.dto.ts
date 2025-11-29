@@ -1,5 +1,5 @@
 export interface StoreDto {
-  id: number;
+  id: string;
   nombre: string;
   direccion: string | null;
   telefono: string | null;

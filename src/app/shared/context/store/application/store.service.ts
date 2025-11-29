@@ -1,9 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 
 import { Store } from '../domain/model';
-import { StoreState } from './state';
-import { GetStoresHttpApplicationUseCase } from './use-case';
+
 import { Loading } from '@shared/class';
+import { StoreState } from '@shared/state';
+import { GetStoresHttpApplicationUseCase } from './use-case';
 
 @Injectable()
 export class StoreService extends Loading<{

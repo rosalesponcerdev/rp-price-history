@@ -39,13 +39,12 @@ export class PriceHistoryMapper {
   ): PriceHistoryDto {
     const priceHistoryDto: PriceHistoryDto = {
       precio: createPriceHistory.price,
-      presentacion_id: Number(createPriceHistory.presentation_id),
-      tienda_id: Number(createPriceHistory.store_id),
+      presentacion_id: createPriceHistory.presentation_id,
+      tienda_id: createPriceHistory.store_id,
       precio_por_unidad_base: createPriceHistory.price_per_base_unit,
     };
 
-    if (createPriceHistory.id)
-      priceHistoryDto.id = Number(createPriceHistory.id);
+    if (createPriceHistory.id) priceHistoryDto.id = createPriceHistory.id;
 
     if (createPriceHistory.notes)
       priceHistoryDto.notas = createPriceHistory.notes;

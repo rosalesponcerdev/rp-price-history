@@ -1,22 +1,22 @@
 import { Category, CategoryApi } from '@category/domain/model';
 
 export interface ProductApi {
-  id: number;
+  id: string;
   nombre: string;
   descripcion: string | null;
-  categoria_id: number | null;
-  unidad_base_id: number | null;
+  categoria_id: string | null;
+  unidad_base_id: string | null;
   created_at: string | null;
   updated_at: string | null;
   categorias?: Partial<CategoryApi>;
 }
 
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   description: string | null;
-  measurementUnitId: number | null;
-  categoryId: number | null;
+  measurementUnitId: string | null;
+  categoryId: string | null;
   createdAt: string | null;
   updatedAt: string | null;
   category?: Partial<Category>;

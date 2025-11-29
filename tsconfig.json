@@ -30,7 +30,8 @@
       "@main-view/*": ["src/app/modules/main-view/*"],
       "@presentation/*": ["src/app/modules/presentation/*"],
       "@price-history/*": ["src/app/modules/price-history/*"],
-      "@auth/*": ["src/app/modules/auth/*"]
+      "@auth/*": ["src/app/modules/auth/*"],
+      "@portal/*": ["src/app/modules/portal/*"]
     }
   },
   "angularCompilerOptions": {

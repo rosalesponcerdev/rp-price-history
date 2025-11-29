@@ -1,28 +1,32 @@
 import { NgClass } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  output,
-  signal,
-} from '@angular/core';
-import { RpValueAccessor } from '@shared/directives';
+import { Component, forwardRef, input, output } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RpBaseValueAccessor } from '@shared/directives';
 
 @Component({
   selector: 'rp-input',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
-  hostDirectives: [RpValueAccessor],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RpInputComponent),
+      multi: true,
+    },
+  ],
   template: `<input
-    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 disabled:opacity-70"
+    [inputMode]="inputModeType()"
     [ngClass]="className()"
     [autocomplete]="autocomplete()"
     [type]="type()"
+    [value]="value()"
     [placeholder]="placeholder()"
+    [disabled]="disabled()"
     (input)="inputChangeHandler($event)"
     (blur)="blurHandler()" />`,
 })
-export class RpInputComponent {
+export class RpInputComponent extends RpBaseValueAccessor {
+  public readonly inputModeType = input<string>('text');
   public readonly type = input<string>('text');
   public readonly placeholder = input<string>('');
   public readonly autocomplete = input<AutoFill>('off');
@@ -30,8 +34,9 @@ export class RpInputComponent {
   public readonly inputChange = output<string>();
   public readonly blurChange = output();
 
-  public readonly value = signal<string>('');
-  public readonly disabled = signal<boolean>(false);
+  constructor() {
+    super();
+  }
 
   public inputChangeHandler(event: Event): void {
     const target = event.target as HTMLInputElement;

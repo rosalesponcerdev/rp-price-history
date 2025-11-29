@@ -63,7 +63,8 @@
               "buildTarget": "rp-price-history:build:production"
             },
             "development": {
-              "buildTarget": "rp-price-history:build:development"
+              "buildTarget": "rp-price-history:build:development",
+              "proxyConfig": "proxy/proxy-local.mjs"
             }
           },
           "defaultConfiguration": "development"

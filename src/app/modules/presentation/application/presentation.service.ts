@@ -2,6 +2,7 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 
 import { SignalValue } from '@shared/interface';
 
+import { MeasurementUnitsService } from '@measurement-units/application/use-case/measurement-units.service';
 import { PresentationState } from '@presentation/application/state';
 import { CreatePresentation, Presentation } from '@presentation/domain/model';
 import {
@@ -25,6 +26,7 @@ export class PresentationService {
   private readonly _getPresentationsByProductUseCase: getPresentationsByProductUseCase;
   private readonly _getPresentationByIdUseCase: GetPresentationByIdUseCase;
 
+  private readonly _measurementUnitsSrv = inject(MeasurementUnitsService);
   private readonly _presentationHttpRepository = inject(
     PresentationHttpRepository
   );
@@ -62,13 +64,25 @@ export class PresentationService {
     }
   }
 
-  public async getPresentationsByProductId(productId: number) {
+  public async getPresentationsByProductId(productId: string) {
     this._setLoading('getByProduct', true);
 
-    const presentations =
-      await this._getPresentationsByProductUseCase.execute(productId);
+    const [measurementUnits, presentations] = await Promise.all([
+      this._measurementUnitsSrv.list(),
+      this._getPresentationsByProductUseCase.execute(productId),
+    ]);
 
-    this._presentationState.presentations = presentations;
+    const res = presentations.map(p => {
+      const unit = measurementUnits.find(
+        u => `${p.unitOfMeasureId}` === `${u.id}`
+      );
+
+      if (!unit) return p;
+
+      return { ...p, unitOfMeasure: unit };
+    });
+
+    this._presentationState.presentations = res;
 
     this._setLoading('getByProduct', false);
   }
