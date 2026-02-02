@@ -13,10 +13,10 @@ import { RpInputComponent } from '@shared/components/input/input.component';
 import { RpSelectComponent } from '@shared/components/select/select.component';
 import { RpTextAreaComponent } from '@shared/components/text-area/text-area.component';
 
-import { Brand } from '@main-view/domain/model/brand.model';
-import { BrandTransformer } from '@main-view/infrastructure/transformer';
+import { Brand } from '@main-view/domain/model';
+import { BrandAdapter } from '@modules/main-view/infrastructure/adapter';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
-import { MeasurementUnitsTransformer } from '@measurement-units/infrastructure/transformer/measurement-units.transformer';
+import { MeasurementUnitsTransformer } from '@modules/measurement-units/infrastructure/adapter';
 import { CreatePresentation } from '@presentation/domain/model';
 import { Product } from '@product/domain/model';
 import { EditPresentationPresenter } from './edit-presentation.presenter';
@@ -42,7 +42,7 @@ export class EditPresentationModalUi implements OnChanges {
   public readonly cancelModal = output();
 
   public readonly brands = input.required({
-    transform: (brands: Brand[]) => BrandTransformer.toItemArray(brands),
+    transform: (brands: Brand[]) => BrandAdapter.toItemArray(brands),
   });
 
   public readonly measurementUnits = input.required({

@@ -2,7 +2,7 @@ import { computed, Injectable, signal, Signal } from '@angular/core';
 
 import { Store } from '@shared/context/store/domain/model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class StoreState {
   public stores$: Signal<Store[]>;
   public selected$: Signal<Store | undefined>;

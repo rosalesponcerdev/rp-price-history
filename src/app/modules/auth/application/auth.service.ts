@@ -6,11 +6,9 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Session } from '@auth/domain/model';
-import { SessionStore } from './store';
 import { RefreshSessionHttpUseCase, SignInHttpUseCase } from './use-case';
 
 @Injectable()
@@ -24,8 +22,6 @@ export class AuthService {
   private readonly _refreshSessionHttpUseCase = inject(
     RefreshSessionHttpUseCase
   );
-  private readonly _sessionStore = inject(SessionStore);
-  private readonly _router = inject(Router);
 
   constructor() {
     this._login = signal(false);

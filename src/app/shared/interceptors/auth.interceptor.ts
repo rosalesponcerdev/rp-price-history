@@ -12,6 +12,7 @@ import { BEARER, TOKEN_TYPE_MAP } from '@shared/constants';
 
 import { AuthService } from '@auth/application/auth.service';
 import { SessionStore } from '@auth/application/store';
+import { NO_AUTH_HTTP_CONTEXT } from './context/no-auth.http-context';
 
 const setAuthHeader = (
   req: HttpRequest<unknown>,
@@ -35,6 +36,8 @@ export const authInterceptor: HttpInterceptorFn = (
 ) => {
   const sessionStore = inject(SessionStore);
   const authService = inject(AuthService);
+
+  if (req.context.has(NO_AUTH_HTTP_CONTEXT)) return next(req);
 
   const newRequest = setAuthHeader(req, sessionStore);
 

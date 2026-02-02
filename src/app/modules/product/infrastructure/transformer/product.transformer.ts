@@ -1,4 +1,4 @@
-import { CategoryTransformer } from '@category/infrastructure/transformer/category.transformer';
+import { CategoryAdapter } from '@modules/category/infrastructure/adapter/category.adapter';
 import {
   CreateProduct,
   CreateProductApi,
@@ -21,7 +21,7 @@ export class ProductTransformer {
     const { categorias: categoria } = product;
 
     if (categoria) {
-      tempProduct.category = CategoryTransformer.fromPartial(categoria);
+      tempProduct.category = CategoryAdapter.fromPartial(categoria);
     }
 
     return tempProduct;

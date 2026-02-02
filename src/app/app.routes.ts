@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { RoutesEnum } from '@shared/enum/routes.enum';
 
-import { LoggedGuard, LoginGuard } from '@auth/ui/guard';
+import { LoginGuard } from '@auth/ui/guard';
 import { PortalPage } from '@portal/page/portal.page';
 import { providePortal } from '@portal/providers';
 
@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: RoutesEnum.BASE,
     component: PortalPage,
-    canActivate: [LoggedGuard],
+    // canActivate: [LoggedGuard],
     providers: [...providePortal()],
     children: [
       {

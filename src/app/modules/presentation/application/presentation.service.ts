@@ -2,7 +2,7 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 
 import { SignalValue } from '@shared/interface';
 
-import { MeasurementUnitsService } from '@measurement-units/application/use-case/measurement-units.service';
+import { MeasurementUnitsService } from '@modules/measurement-units/application/measurement-units.service';
 import { PresentationState } from '@presentation/application/state';
 import { CreatePresentation, Presentation } from '@presentation/domain/model';
 import {
@@ -10,7 +10,7 @@ import {
   GetPresentationByIdUseCase,
   getPresentationsByProductUseCase,
 } from '@presentation/domain/use-case';
-import { PresentationHttpRepository } from '@presentation/infrastructure/repository';
+import { PRESENTATION_PORT } from './providers/token';
 
 @Injectable()
 export class PresentationService {
@@ -27,9 +27,7 @@ export class PresentationService {
   private readonly _getPresentationByIdUseCase: GetPresentationByIdUseCase;
 
   private readonly _measurementUnitsSrv = inject(MeasurementUnitsService);
-  private readonly _presentationHttpRepository = inject(
-    PresentationHttpRepository
-  );
+  private readonly _presentationHttpRepository = inject(PRESENTATION_PORT);
 
   private readonly _presentationState = inject(PresentationState);
 

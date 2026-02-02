@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '@shared/components/button/button.component';
 
-import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
+import { Brand, NewBrand } from '@main-view/domain/model';
 import { BrandModalPresenter } from './brand.presenter';
 
 @Component({

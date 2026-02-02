@@ -4,13 +4,13 @@ import { lastValueFrom } from 'rxjs';
 
 import { EndPoint } from '@shared/enum';
 
-import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
-import { BrandPort } from '@main-view/domain/port/brand.port';
+import { Brand, NewBrand } from '@main-view/domain/model';
+import { BrandPort } from '@main-view/domain/port';
 import {
   BrandApi,
   NewBrandApi,
 } from '@main-view/infrastructure/interface/brand-api.interface';
-import { BrandTransformer } from '@main-view/infrastructure/transformer';
+import { BrandAdapter } from '@modules/main-view/infrastructure/adapter';
 
 @Injectable()
 export class BrandHttpRepository implements BrandPort {
@@ -27,7 +27,7 @@ export class BrandHttpRepository implements BrandPort {
       })
     );
 
-    return brands.map(b => BrandTransformer.from(b));
+    return brands.map(b => BrandAdapter.from(b));
   }
 
   public async create(newBrand: NewBrand): Promise<Brand> {
@@ -35,13 +35,13 @@ export class BrandHttpRepository implements BrandPort {
       .set('Content-Type', 'application/json')
       .set('Prefer', 'return=representation');
 
-    const body: NewBrandApi = BrandTransformer.saveTo(newBrand);
+    const body: NewBrandApi = BrandAdapter.saveTo(newBrand);
 
     const [savedBrand] = await lastValueFrom(
       this._httpSrv.post<BrandApi[]>(this.URL, body, { headers })
     );
 
-    return BrandTransformer.from(savedBrand);
+    return BrandAdapter.from(savedBrand);
   }
 
   public async getById(id: string): Promise<Brand> {
@@ -57,6 +57,6 @@ export class BrandHttpRepository implements BrandPort {
       })
     );
 
-    return BrandTransformer.from(brand);
+    return BrandAdapter.from(brand);
   }
 }
