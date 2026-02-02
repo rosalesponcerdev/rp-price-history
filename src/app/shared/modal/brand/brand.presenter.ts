@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { NewBrand } from '@main-view/domain/model/brand.model';
+import { NewBrand } from '@main-view/domain/model';
 
 interface BrandFormGroup {
   name: FormControl<Required<NewBrand['name']>>;

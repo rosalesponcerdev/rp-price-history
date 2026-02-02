@@ -8,7 +8,7 @@ import { SessionStore } from '@auth/application/store';
 import { CategoryService } from '@category/application/category.service';
 import { Category } from '@category/domain/model';
 import { ListFormValue } from '@main-view/ui/interface';
-import { ProductService } from '@product/application/use-case/product.service';
+import { ProductService } from '@modules/product/application/product.service';
 import { Product } from '@product/domain/model';
 import { MainViewUiComponent } from './main-view.ui';
 

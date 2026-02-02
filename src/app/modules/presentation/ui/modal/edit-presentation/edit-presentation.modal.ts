@@ -9,10 +9,10 @@ import {
 
 import { ModalService } from '@shared/services';
 
-import { BrandService } from '@main-view/application/use-case/brand.service';
-import { Brand } from '@main-view/domain/model/brand.model';
+import { BrandService } from '@modules/main-view/application/brand.service';
+import { Brand } from '@main-view/domain/model';
 
-import { MeasurementUnitsService } from '@measurement-units/application/use-case/measurement-units.service';
+import { MeasurementUnitsService } from '@modules/measurement-units/application/measurement-units.service';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
 import { PresentationService } from '@presentation/application';
 import { CreatePresentation } from '@presentation/domain/model';

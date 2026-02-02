@@ -1,5 +1,5 @@
-import { BrandTransformer } from '@main-view/infrastructure/transformer';
-import { MeasurementUnitsTransformer } from '@measurement-units/infrastructure/transformer/measurement-units.transformer';
+import { BrandAdapter } from '@modules/main-view/infrastructure/adapter';
+import { MeasurementUnitsTransformer } from '@modules/measurement-units/infrastructure/adapter';
 import { CreatePresentation, Presentation } from '@presentation/domain/model';
 import {
   CreatePresentationDto,
@@ -27,7 +27,7 @@ export class PresentationMapper {
     };
 
     if (presentationDto.marcas)
-      presentation.brand = BrandTransformer.from(presentationDto.marcas);
+      presentation.brand = BrandAdapter.from(presentationDto.marcas);
 
     if (presentationDto.productos)
       presentation.product = ProductTransformer.from(presentationDto.productos);

@@ -7,7 +7,7 @@ import { providePresentation } from '@presentation/application/providers';
 import { PresentationState } from '@presentation/application/state';
 import { Presentation } from '@presentation/domain/model';
 import { EditPresentationModalComponent } from '@presentation/ui/modal/edit-presentation/edit-presentation.modal';
-import { ProductService } from '@product/application/use-case';
+import { ProductService } from '@product/application/product.service';
 import { Product } from '@product/domain/model';
 import { ProductPageUiComponent } from './product.ui';
 

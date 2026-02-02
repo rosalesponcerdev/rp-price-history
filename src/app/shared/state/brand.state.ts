@@ -6,9 +6,9 @@ import {
   WritableSignal,
 } from '@angular/core';
 
-import { Brand } from '@main-view/domain/model/brand.model';
+import { Brand } from '@main-view/domain/model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BrandState {
   public readonly state$: Signal<Brand[]>;
   public readonly currentBrand$: Signal<Brand | undefined>;

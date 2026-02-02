@@ -4,9 +4,9 @@ import { ModalService } from '@shared/services';
 
 import { CategoryService } from '@category/application/category.service';
 import { Category } from '@category/domain/model/category.model';
-import { MeasurementUnitsService } from '@measurement-units/application/use-case/measurement-units.service';
+import { MeasurementUnitsService } from '@modules/measurement-units/application/measurement-units.service';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
-import { ProductService } from '@product/application/use-case/product.service';
+import { ProductService } from '@modules/product/application/product.service';
 import { CreateProduct } from '@product/domain/model/product.model';
 import { ProductModalUi } from './product.modal.ui';
 

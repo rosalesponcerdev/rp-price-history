@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 
-import { GetStoresUseCase } from '@shared/context/store/domain/use-case';
-import { STORE_HTTP_REPOSITORY } from '@shared/context/store/infrastructure/repository';
 import { Store } from '@shared/context/store/domain/model';
+import { GetStoresUseCase } from '@shared/context/store/domain/use-case';
+
+import { STORE_HTTP_REPOSITORY } from '../providers/token';
 
 @Injectable()
 export class GetStoresHttpApplicationUseCase {

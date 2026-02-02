@@ -1,4 +1,5 @@
-import { Category, CategoryApi } from '@category/domain/model';
+import { Category } from '@category/domain/model';
+import { CategoryDto } from '@category/infrastructure/dto';
 
 export interface ProductApi {
   id: string;
@@ -8,7 +9,7 @@ export interface ProductApi {
   unidad_base_id: string | null;
   created_at: string | null;
   updated_at: string | null;
-  categorias?: Partial<CategoryApi>;
+  categorias?: Partial<CategoryDto>;
 }
 
 export interface Product {

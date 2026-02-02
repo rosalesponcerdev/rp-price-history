@@ -1,4 +1,4 @@
-import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
+import { Brand, NewBrand } from '@main-view/domain/model';
 
 export interface BrandPort {
   getAll(): Promise<Brand[]>;

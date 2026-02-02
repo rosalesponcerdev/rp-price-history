@@ -72,8 +72,6 @@ export class ModalService {
     const dataBinding = signal(data);
     const componentType = signal(component);
 
-    console.log(this.elementInjector);
-
     const componentRef = createComponent(ModalComponent, {
       environmentInjector: this.environmentInjector,
       elementInjector: this.elementInjector,

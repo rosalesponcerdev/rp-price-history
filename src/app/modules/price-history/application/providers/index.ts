@@ -5,14 +5,15 @@ import {
   GetPriceHistoryByPresentationHtpApplicationUseCase,
   RecordPriceHistoryHttpApplicationUseCase,
 } from '@price-history/application/use-case';
-import { PriceHistoryHttpRepository } from '@price-history/infrastructure/repository';
+import { PriceHistoryLocalRepository } from '@price-history/infrastructure/repository';
 import { PRICE_HISTORY_HTTP_REPOSITORY } from './token';
 
 export function providePriceHistory(): Provider[] {
   return [
     {
       provide: PRICE_HISTORY_HTTP_REPOSITORY,
-      useClass: PriceHistoryHttpRepository,
+      // useClass: PriceHistoryHttpRepository,
+      useClass: PriceHistoryLocalRepository,
     },
     RecordPriceHistoryHttpApplicationUseCase,
     GetPriceHistoryByPresentationHtpApplicationUseCase,

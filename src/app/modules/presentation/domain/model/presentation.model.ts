@@ -1,4 +1,4 @@
-import { Brand } from '@main-view/domain/model/brand.model';
+import { Brand } from '@main-view/domain/model';
 import { MeasurementUnits } from '@measurement-units/domain/model/measurement-units.model';
 import { Product } from '@product/domain/model';
 

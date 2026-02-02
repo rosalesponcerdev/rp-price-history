@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 
-import { BrandService } from '@main-view/application/use-case/brand.service';
-import { Brand, NewBrand } from '@main-view/domain/model/brand.model';
+import { BrandService } from '@modules/main-view/application/brand.service';
+import { Brand, NewBrand } from '@main-view/domain/model';
 import { ModalService } from '@shared/services';
 import { BrandUiComponent } from './brand.ui';
 

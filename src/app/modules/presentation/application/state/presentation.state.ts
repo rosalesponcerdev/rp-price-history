@@ -8,7 +8,7 @@ import {
 
 import { Presentation } from '@presentation/domain/model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PresentationState {
   public readonly currentPresentation$: Signal<Presentation | undefined>;
   public readonly presentations$: Signal<Presentation[]>;
